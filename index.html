@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1週間の献立プラン 🍽️</title>
+  <meta name="description" content="2人分・節約＆バランス重視の1週間献立プラン。レシピ＆買い物リスト付き！" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif; background: linear-gradient(180deg, #FFF8F0 0%, #FFF 40%); min-height: 100vh; }
+    button { cursor: pointer; font-family: inherit; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    const DAYS = ["月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日", "日曜日"];
+    const DAY_EMOJI = ["🌙", "🔥", "💧", "🪵", "💰", "🌍", "☀️"];
+
+    const meals = [
+      {
+        day: "月曜日", main: "豚こま肉じゃが",
+        mainDesc: "豚こま切れ肉でコスパ◎ ほくほくじゃがいもに味がしみしみ",
+        side: "ほうれん草のおひたし", soup: "わかめと豆腐の味噌汁", cost: "約550円", time: "25分",
+        tip: "肉じゃがは多めに作って翌日リメイクもOK！",
+        nutrition: ["タンパク質◎", "ビタミンC", "鉄分"], color: "#E8A87C",
+        recipes: [
+          { name: "豚こま肉じゃが", emoji: "🔥",
+            ingredients: ["豚こま切れ肉 150g", "じゃがいも 2個", "玉ねぎ 1/2個", "にんじん 1/2本", "醤油 大さじ2", "みりん 大さじ2", "砂糖 大さじ1", "だし汁 300ml", "サラダ油 少々"],
+            steps: ["じゃがいもは一口大、玉ねぎはくし切り、にんじんは乱切りにする", "鍋に油を熱し、豚こまを炒めて色が変わったら野菜を加えて軽く炒める", "だし汁を加えて沸騰したらアクを取り、砂糖・みりん・醤油を入れる", "落し蓋をして中火で15分ほど煮る。じゃがいもに竹串がスッと通ればOK！"]
+          },
+          { name: "ほうれん草のおひたし", emoji: "🥗",
+            ingredients: ["ほうれん草 1/2袋", "醤油 小さじ1", "かつお節 適量"],
+            steps: ["ほうれん草を塩少々入れた熱湯で30秒ほど茹でて冷水にとる", "水気をしっかり絞って3〜4cmに切り、醤油をかけてかつお節をのせる"]
+          },
+          { name: "わかめと豆腐の味噌汁", emoji: "🍲",
+            ingredients: ["豆腐 1/4丁", "乾燥わかめ 小さじ1", "だし汁 400ml", "味噌 大さじ1.5"],
+            steps: ["だし汁を温め、さいの目に切った豆腐とわかめを入れる", "沸騰直前で火を止め、味噌を溶き入れて完成"]
+          }
+        ]
+      },
+      {
+        day: "火曜日", main: "鶏むね肉の照り焼き",
+        mainDesc: "観音開きで均一に焼く！ 片栗粉でしっとりジューシー",
+        side: "キャベツの塩昆布和え", soup: "卵スープ（中華風）", cost: "約480円", time: "20分",
+        tip: "鶏むねは砂糖を少し揉み込むと柔らかくなるよ！",
+        nutrition: ["タンパク質◎", "ビタミンK", "食物繊維"], color: "#85CDCA",
+        recipes: [
+          { name: "鶏むね肉の照り焼き", emoji: "🔥",
+            ingredients: ["鶏むね肉 1枚", "片栗粉 大さじ1", "砂糖 小さじ1（下味用）", "醤油 大さじ2", "みりん 大さじ2", "砂糖 大さじ1/2", "サラダ油 大さじ1"],
+            steps: ["鶏むねは観音開きにして厚さを均一にし、砂糖小さじ1を揉み込んで5分置く", "水気を拭いて片栗粉を全体にまぶす", "フライパンに油を熱し、中火で両面こんがり焼く（片面4分ずつ）", "醤油・みりん・砂糖を混ぜて回しかけ、とろみがつくまで絡める"]
+          },
+          { name: "キャベツの塩昆布和え", emoji: "🥗",
+            ingredients: ["キャベツ 2〜3枚", "塩昆布 大さじ1", "ごま油 小さじ1"],
+            steps: ["キャベツをざく切りにしてポリ袋に入れる", "塩昆布とごま油を加えて袋の上から揉み、5分置いて完成"]
+          },
+          { name: "卵スープ（中華風）", emoji: "🍲",
+            ingredients: ["卵 1個", "水 400ml", "鶏がらスープの素 小さじ1", "ごま油 少々", "塩こしょう 少々"],
+            steps: ["水を沸かし鶏がらスープの素を溶かす", "溶き卵を細く回し入れ、ふわっと浮いたら火を止めてごま油を垂らす"]
+          }
+        ]
+      },
+      {
+        day: "水曜日", main: "鮭のホイル焼き",
+        mainDesc: "野菜と一緒にホイルに包んでトースターへ！洗い物少ない",
+        side: "もやしのナムル", soup: "じゃがいもと玉ねぎの味噌汁", cost: "約600円", time: "20分",
+        tip: "ホイルに包むだけだから疲れてる日にぴったり🐟",
+        nutrition: ["DHA・EPA", "ビタミンD", "ビタミンB群"], color: "#D4A5A5",
+        recipes: [
+          { name: "鮭のホイル焼き", emoji: "🔥",
+            ingredients: ["鮭切り身 2切れ", "玉ねぎ 1/4個（薄切り）", "しめじ 1/4株", "バター 10g", "醤油 小さじ2", "塩こしょう 少々"],
+            steps: ["アルミホイルを広げ、薄切り玉ねぎを敷いてその上に鮭をのせる", "しめじを散らし、塩こしょうしてバターをのせる", "ホイルをしっかり閉じてトースター（またはフライパン蓋付き）で15分焼く", "開けて醤油を回しかけて完成！"]
+          },
+          { name: "もやしのナムル", emoji: "🥗",
+            ingredients: ["もやし 1袋", "ごま油 大さじ1", "鶏がらスープの素 小さじ1/2", "白ごま 適量"],
+            steps: ["もやしを熱湯で1分茹でてザルにあげ、水気をしっかり切る", "ごま油・鶏がらスープの素・白ごまで和えて完成"]
+          },
+          { name: "じゃがいもと玉ねぎの味噌汁", emoji: "🍲",
+            ingredients: ["じゃがいも 1個", "玉ねぎ 1/4個", "だし汁 400ml", "味噌 大さじ1.5"],
+            steps: ["じゃがいもは薄いいちょう切り、玉ねぎは薄切りにしてだし汁で柔らかくなるまで煮る", "火を止めて味噌を溶き入れる"]
+          }
+        ]
+      },
+      {
+        day: "木曜日", main: "麻婆豆腐",
+        mainDesc: "ひき肉と豆腐で高タンパク！ 豆板醤でピリ辛がご飯に合う",
+        side: "きゅうりの中華サラダ", soup: "春雨スープ", cost: "約450円", time: "15分",
+        tip: "豆腐は木綿を使うと崩れにくいよ💪",
+        nutrition: ["タンパク質◎", "カルシウム", "イソフラボン"], color: "#E27D60",
+        recipes: [
+          { name: "麻婆豆腐", emoji: "🔥",
+            ingredients: ["木綿豆腐 1丁", "豚ひき肉 100g", "長ねぎ 1/3本（みじん切り）", "にんにく・しょうが 各1片", "豆板醤 小さじ1", "醤油 大さじ1", "鶏がらスープの素 小さじ1", "水 150ml", "片栗粉 大さじ1/2（水で溶く）", "ごま油 大さじ1"],
+            steps: ["豆腐は2cm角に切り、熱湯で2分茹でてザルにあげておく（崩れ防止）", "フライパンにごま油・にんにく・しょうがを炒め、香りが出たらひき肉を加えて炒める", "豆板醤を加えて炒め、水・鶏がらスープの素・醤油を入れて煮立てる", "豆腐を入れて2分煮て、水溶き片栗粉でとろみをつけ、ねぎを散らす"]
+          },
+          { name: "きゅうりの中華サラダ", emoji: "🥗",
+            ingredients: ["きゅうり 1本", "醤油 小さじ1", "酢 小さじ1", "ごま油 小さじ1", "砂糖 少々", "白ごま 適量"],
+            steps: ["きゅうりを麺棒で叩いて一口大にちぎる", "調味料を全部混ぜてきゅうりと和え、白ごまをふる"]
+          },
+          { name: "春雨スープ", emoji: "🍲",
+            ingredients: ["春雨 20g", "水 400ml", "鶏がらスープの素 小さじ1", "醤油 小さじ1", "ごま油 少々", "ねぎ 少々"],
+            steps: ["水を沸かして鶏がらスープの素・醤油を入れ、春雨を加えて3分煮る", "ごま油を垂らしてねぎを散らして完成"]
+          }
+        ]
+      },
+      {
+        day: "金曜日", main: "豚バラもやし蒸し",
+        mainDesc: "レンジで完結！ ポン酢でさっぱり食べる簡単メニュー",
+        side: "ツナとコーンのサラダ", soup: "なめこの味噌汁", cost: "約400円", time: "10分",
+        tip: "金曜は疲れMAXだからレンジ調理で楽しよ〜😴",
+        nutrition: ["タンパク質◎", "ビタミンB1", "食物繊維"], color: "#C38D9E",
+        recipes: [
+          { name: "豚バラもやし蒸し", emoji: "🔥",
+            ingredients: ["豚バラ薄切り 200g", "もやし 1袋", "酒 大さじ1", "塩こしょう 少々", "ポン酢 適量", "ねぎ・ごま お好みで"],
+            steps: ["耐熱皿にもやしを敷き、その上に豚バラを広げてのせる", "酒・塩こしょうをふり、ふんわりラップをかける", "電子レンジ600Wで5〜6分加熱する", "ポン酢をかけて、お好みでねぎ・ごまを散らして完成！"]
+          },
+          { name: "ツナとコーンのサラダ", emoji: "🥗",
+            ingredients: ["ツナ缶 1個", "コーン缶 1/2個", "レタスまたはキャベツ 2枚", "マヨネーズ 大さじ1", "塩こしょう 少々"],
+            steps: ["レタスをちぎってお皿に敷く", "ツナ（油を軽く切る）とコーンをのせ、マヨネーズと塩こしょうで和える"]
+          },
+          { name: "なめこの味噌汁", emoji: "🍲",
+            ingredients: ["なめこ 1袋", "豆腐 1/4丁", "だし汁 400ml", "味噌 大さじ1.5"],
+            steps: ["なめこはサッと水洗いしてぬめりを軽く落とす", "だし汁になめこと豆腐を入れて温め、火を止めて味噌を溶き入れる"]
+          }
+        ]
+      },
+      {
+        day: "土曜日", main: "親子丼",
+        mainDesc: "とろとろ卵と鶏もも肉の黄金コンビ！ 丼だから洗い物少ない",
+        side: "ほうれん草の胡麻和え", soup: "大根と油揚げの味噌汁", cost: "約500円", time: "20分",
+        tip: "卵は2回に分けて入れるとトロトロに仕上がる✨",
+        nutrition: ["タンパク質◎", "ビタミンA", "鉄分"], color: "#F6AE2D",
+        recipes: [
+          { name: "親子丼", emoji: "🔥",
+            ingredients: ["鶏もも肉 1枚（一口大）", "玉ねぎ 1/2個（薄切り）", "卵 3個", "醤油 大さじ2", "みりん 大さじ2", "砂糖 小さじ1", "だし汁 100ml", "ごはん 丼2杯分"],
+            steps: ["小さめのフライパンにだし汁・醤油・みりん・砂糖を入れて煮立てる", "玉ねぎと鶏もも肉を入れ、蓋をして中火で5分煮る", "溶き卵の2/3を回し入れ、蓋をして1分。残りの卵を入れて30秒で火を止める", "ごはんの上に滑らせるようにのせて完成！"]
+          },
+          { name: "ほうれん草の胡麻和え", emoji: "🥗",
+            ingredients: ["ほうれん草 1/2袋", "すりごま 大さじ1", "醤油 小さじ1", "砂糖 小さじ1/2"],
+            steps: ["ほうれん草を茹でて冷水にとり、水気を絞って3〜4cmに切る", "すりごま・醤油・砂糖を混ぜたタレで和える"]
+          },
+          { name: "大根と油揚げの味噌汁", emoji: "🍲",
+            ingredients: ["大根 3cm分", "油揚げ 1/2枚", "だし汁 400ml", "味噌 大さじ1.5"],
+            steps: ["大根はいちょう切り、油揚げは短冊切りにしてだし汁で煮る", "大根が柔らかくなったら火を止めて味噌を溶き入れる"]
+          }
+        ]
+      },
+      {
+        day: "日曜日", main: "野菜たっぷりカレー",
+        mainDesc: "週末にまとめて作り置き！ 月曜のお弁当にもなる",
+        side: "コールスローサラダ", soup: "—", cost: "約550円", time: "30分",
+        tip: "多めに作って冷凍→来週の疲れた日に解凍するだけ🍛",
+        nutrition: ["ビタミンA", "食物繊維", "ビタミンC"], color: "#5DA271",
+        recipes: [
+          { name: "野菜たっぷりカレー", emoji: "🔥",
+            ingredients: ["豚こま切れ肉 150g", "じゃがいも 2個", "にんじん 1/2本", "玉ねぎ 1個", "カレールー 1/2箱", "水 600ml", "サラダ油 大さじ1"],
+            steps: ["野菜を一口大に切る。玉ねぎはくし切り", "鍋に油を熱し、豚こまと玉ねぎを炒めてしんなりしたら残りの野菜も加える", "水を入れて沸騰したらアクを取り、蓋をして中火で15分煮る", "火を止めてルーを割り入れ、溶かしてから弱火で5分とろみがつくまで煮る"]
+          },
+          { name: "コールスローサラダ", emoji: "🥗",
+            ingredients: ["キャベツ 2〜3枚", "にんじん 少々", "コーン缶 1/2個", "マヨネーズ 大さじ2", "酢 小さじ1", "砂糖 小さじ1/2", "塩こしょう 少々"],
+            steps: ["キャベツは千切り、にんじんも千切りにして塩もみし、水気を絞る", "マヨネーズ・酢・砂糖・塩こしょうを混ぜてドレッシングを作り、野菜とコーンを和える"]
+          }
+        ]
+      }
+    ];
+
+    const weeklyTotal = "約3,530円";
+
+    function App() {
+      const [selectedDay, setSelectedDay] = useState(0);
+      const [showShopping, setShowShopping] = useState(false);
+      const [showRecipe, setShowRecipe] = useState(false);
+      const [selectedRecipe, setSelectedRecipe] = useState(0);
+
+      const meal = meals[selectedDay];
+
+      return (
+        <div style={{ maxWidth: 520, margin: "0 auto", padding: "0 12px 24px" }}>
+          {/* Header */}
+          <div style={{ textAlign: "center", padding: "24px 0 16px" }}>
+            <div style={{ fontSize: 32, marginBottom: 4 }}>🍽️</div>
+            <h1 style={{ fontSize: 22, fontWeight: 800, color: "#2D2A26", margin: 0, letterSpacing: "-0.5px" }}>1週間の献立プラン</h1>
+            <p style={{ fontSize: 13, color: "#8C857B", margin: "6px 0 0", fontWeight: 500 }}>2人分 ・ 節約＆バランス重視 ・ 週合計 {weeklyTotal}</p>
+          </div>
+
+          {/* Day Selector */}
+          <div style={{ display: "flex", gap: 4, justifyContent: "center", marginBottom: 20, flexWrap: "wrap" }}>
+            {DAYS.map((day, i) => (
+              <button key={day} onClick={() => { setSelectedDay(i); setShowShopping(false); setShowRecipe(false); setSelectedRecipe(0); }}
+                style={{
+                  border: "none", borderRadius: 14, padding: "8px 10px", fontSize: 12,
+                  fontWeight: selectedDay === i ? 700 : 500,
+                  background: selectedDay === i ? meals[i].color : "transparent",
+                  color: selectedDay === i ? "#FFF" : "#6B6560",
+                  transition: "all 0.25s ease",
+                  display: "flex", flexDirection: "column", alignItems: "center", gap: 2, minWidth: 52,
+                }}>
+                <span style={{ fontSize: 16 }}>{DAY_EMOJI[i]}</span>
+                <span>{day.replace("曜日", "")}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Main Card */}
+          <div style={{ background: "#FFF", borderRadius: 20, boxShadow: "0 2px 20px rgba(0,0,0,0.06)", overflow: "hidden" }}>
+            <div style={{ height: 6, background: `linear-gradient(90deg, ${meal.color}, ${meal.color}CC)` }} />
+            <div style={{ padding: "20px 20px 16px" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <span style={{ fontSize: 24 }}>{DAY_EMOJI[selectedDay]}</span>
+                  <span style={{ fontSize: 18, fontWeight: 800, color: "#2D2A26" }}>{meal.day}</span>
+                </div>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <span style={{ background: "#F0EDE8", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 600, color: "#6B6560" }}>⏱ {meal.time}</span>
+                  <span style={{ background: meal.color + "20", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 600, color: meal.color }}>💰 {meal.cost}</span>
+                </div>
+              </div>
+
+              <div style={{ background: `linear-gradient(135deg, ${meal.color}12, ${meal.color}08)`, borderRadius: 14, padding: 16, marginBottom: 12, borderLeft: `4px solid ${meal.color}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: meal.color, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 6 }}>🔥 メインおかず</div>
+                <div style={{ fontSize: 17, fontWeight: 800, color: "#2D2A26", marginBottom: 4 }}>{meal.main}</div>
+                <div style={{ fontSize: 12, color: "#8C857B", lineHeight: 1.6 }}>{meal.mainDesc}</div>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 12 }}>
+                <div style={{ background: "#FAFAF8", borderRadius: 12, padding: "12px 14px" }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: "#B5AFA6", letterSpacing: 1, marginBottom: 4 }}>🥗 副菜</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "#4A4540" }}>{meal.side}</div>
+                </div>
+                <div style={{ background: "#FAFAF8", borderRadius: 12, padding: "12px 14px" }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: "#B5AFA6", letterSpacing: 1, marginBottom: 4 }}>🍲 汁物</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "#4A4540" }}>{meal.soup}</div>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 14 }}>
+                {meal.nutrition.map((n) => (
+                  <span key={n} style={{ background: "#E8F5E9", color: "#4CAF50", borderRadius: 20, padding: "3px 10px", fontSize: 11, fontWeight: 600 }}>✓ {n}</span>
+                ))}
+              </div>
+
+              <div style={{ background: "#FFFDE7", borderRadius: 12, padding: "10px 14px", display: "flex", gap: 8, alignItems: "flex-start" }}>
+                <span style={{ fontSize: 16, flexShrink: 0 }}>💡</span>
+                <span style={{ fontSize: 12, color: "#7B7263", lineHeight: 1.6, fontWeight: 500 }}>{meal.tip}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Recipe Button */}
+          <button onClick={() => { setShowRecipe(!showRecipe); setShowShopping(false); setSelectedRecipe(0); }}
+            style={{
+              width: "100%", marginTop: 16, padding: "14px 20px",
+              background: showRecipe ? meal.color : "#FFF",
+              color: showRecipe ? "#FFF" : "#2D2A26",
+              border: showRecipe ? "none" : "2px solid #E8E4DE",
+              borderRadius: 16, fontSize: 14, fontWeight: 700,
+              transition: "all 0.25s ease",
+              display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+            }}>
+            📖 作り方を見る {showRecipe ? "▲" : "▼"}
+          </button>
+
+          {/* Recipe Section */}
+          {showRecipe && (
+            <div style={{ background: "#FFF", borderRadius: 20, boxShadow: "0 2px 20px rgba(0,0,0,0.06)", overflow: "hidden", marginTop: 12 }}>
+              <div style={{ display: "flex", borderBottom: "2px solid #F0EDE8" }}>
+                {meal.recipes.map((r, i) => (
+                  <button key={r.name} onClick={() => setSelectedRecipe(i)}
+                    style={{
+                      flex: 1, border: "none", padding: "12px 6px",
+                      background: selectedRecipe === i ? `${meal.color}10` : "transparent",
+                      borderBottom: selectedRecipe === i ? `3px solid ${meal.color}` : "3px solid transparent",
+                      fontSize: 11, fontWeight: selectedRecipe === i ? 700 : 500,
+                      color: selectedRecipe === i ? meal.color : "#8C857B",
+                      transition: "all 0.2s ease", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+                    }}>
+                    {r.emoji} {r.name.length > 9 ? r.name.slice(0, 9) + "…" : r.name}
+                  </button>
+                ))}
+              </div>
+              <div style={{ padding: 20 }}>
+                {(() => {
+                  const recipe = meal.recipes[selectedRecipe];
+                  return (
+                    <>
+                      <h3 style={{ fontSize: 16, fontWeight: 800, color: "#2D2A26", margin: "0 0 16px", display: "flex", alignItems: "center", gap: 8 }}>
+                        {recipe.emoji} {recipe.name}
+                      </h3>
+                      <div style={{ background: "#FAFAF8", borderRadius: 14, padding: 16, marginBottom: 16 }}>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: "#B5AFA6", letterSpacing: 1, marginBottom: 10, textTransform: "uppercase" }}>🧂 材料（2人分）</div>
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px 16px" }}>
+                          {recipe.ingredients.map((ing, i) => (
+                            <div key={i} style={{ fontSize: 12, color: "#4A4540", fontWeight: 500, padding: "2px 0", borderBottom: "1px dashed #E8E4DE" }}>{ing}</div>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: "#B5AFA6", letterSpacing: 1, marginBottom: 12, textTransform: "uppercase" }}>👨‍🍳 手順</div>
+                        {recipe.steps.map((step, i) => (
+                          <div key={i} style={{ display: "flex", gap: 12, marginBottom: 14, alignItems: "flex-start" }}>
+                            <div style={{
+                              width: 28, height: 28, borderRadius: "50%", flexShrink: 0,
+                              background: `linear-gradient(135deg, ${meal.color}, ${meal.color}CC)`,
+                              color: "#FFF", display: "flex", alignItems: "center", justifyContent: "center",
+                              fontSize: 13, fontWeight: 800,
+                            }}>{i + 1}</div>
+                            <div style={{ fontSize: 13, color: "#4A4540", lineHeight: 1.7, fontWeight: 500, paddingTop: 4 }}>{step}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  );
+                })()}
+              </div>
+            </div>
+          )}
+
+          {/* Shopping List */}
+          <button onClick={() => { setShowShopping(!showShopping); setShowRecipe(false); }}
+            style={{
+              width: "100%", marginTop: 12, padding: "14px 20px",
+              background: showShopping ? "#2D2A26" : "#FFF",
+              color: showShopping ? "#FFF" : "#2D2A26",
+              border: showShopping ? "none" : "2px solid #E8E4DE",
+              borderRadius: 16, fontSize: 14, fontWeight: 700,
+              transition: "all 0.25s ease",
+              display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+            }}>
+            🛒 週間買い物リスト {showShopping ? "▲" : "▼"}
+          </button>
+
+          {showShopping && (
+            <div style={{ background: "#FFF", borderRadius: 20, boxShadow: "0 2px 20px rgba(0,0,0,0.06)", padding: 20, marginTop: 12 }}>
+              <h3 style={{ fontSize: 15, fontWeight: 800, color: "#2D2A26", margin: "0 0 14px" }}>📋 まとめ買いリスト（2人分）</h3>
+              {[
+                { cat: "🥩 肉・魚", items: ["豚こま切れ肉 300g", "鶏むね肉 1枚", "鶏もも肉 1枚", "豚ひき肉 100g", "豚バラ薄切り 200g", "鮭切り身 2切れ"], color: "#E8A87C" },
+                { cat: "🥬 野菜", items: ["じゃがいも 5個", "玉ねぎ 3個", "にんじん 2本", "キャベツ 1/2玉", "ほうれん草 1袋", "もやし 2袋", "きゅうり 1本", "大根 少々", "なめこ 1袋", "しめじ 1/4株", "長ねぎ 1本", "レタス 少々"], color: "#5DA271" },
+                { cat: "🥚 その他", items: ["卵 1パック", "木綿豆腐 2丁", "油揚げ 1枚", "ツナ缶 1個", "コーン缶 1個", "春雨 1袋", "乾燥わかめ", "塩昆布 1袋", "カレールー 1/2箱", "すりごま・白ごま"], color: "#85CDCA" },
+              ].map((section) => (
+                <div key={section.cat} style={{ marginBottom: 14 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: section.color, marginBottom: 8, paddingBottom: 4, borderBottom: `2px solid ${section.color}30` }}>{section.cat}</div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 12px" }}>
+                    {section.items.map((item) => (
+                      <div key={item} style={{ fontSize: 12, color: "#5A554F", padding: "3px 0", fontWeight: 500 }}>• {item}</div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+              <div style={{ background: "#FFF3E0", borderRadius: 10, padding: "10px 14px", marginTop: 8, fontSize: 12, color: "#E65100", fontWeight: 600, textAlign: "center" }}>
+                🏪 週末にまとめ買いがおすすめ！ 合計 約3,500円〜4,000円
+              </div>
+            </div>
+          )}
+
+          <p style={{ textAlign: "center", fontSize: 11, color: "#C4BEB6", marginTop: 20, fontWeight: 500 }}>※ 価格は目安です。調味料・米は含みません 🍚</p>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
