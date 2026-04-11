@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>週間献立 2026年3月30日〜4月5日</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>週間献立 2026年4月13日〜4月19日</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background: #f5f5f0; color: #333; }
-    #root { max-width: 900px; margin: 0 auto; padding: 16px; }
+    body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background: #f0f4f8; color: #333; }
+    #root { max-width: 1100px; margin: 0 auto; padding: 16px; }
   </style>
 </head>
 <body>
@@ -18,413 +18,372 @@
 <script type="text/babel">
 const { useState } = React;
 
-const WEEK = "2026年3月30日（月）〜4月5日（日）";
-
-const meals = [
-  {
-    day: "月曜日",
-    date: "3/30",
-    main: "鶏もも肉の照り焼き",
-    side: "ほうれん草のおひたし",
-    soup: "豆腐の味噌汁",
-    time: "25分",
-    cost: 480,
-    ingredients: [
-      "鶏もも肉 300g（約180円）",
-      "しょうゆ 大さじ2",
-      "みりん 大さじ2",
-      "砂糖 小さじ1",
-      "ほうれん草 1束（約100円）",
-      "かつお節 適量",
-      "豆腐 半丁（約50円）",
-      "わかめ（乾燥）少量",
-      "味噌 大さじ1.5",
-      "だし 400ml",
-    ],
-    steps: [
-      "鶏もも肉を一口大に切り、フライパンで皮目から中火で焼く（約5分）。余分な脂を拭き取る。",
-      "しょうゆ・みりん・砂糖を合わせたタレを加え、照りが出るまで煮絡める（約3分）。",
-      "ほうれん草を塩茹でして水気を絞り、しょうゆとかつお節で和える。",
-      "だしを沸かし、豆腐とわかめを入れて味噌を溶き入れる。",
-    ],
-    nutrition: "鶏もも肉はビタミンB群が豊富。ほうれん草で鉄分・葉酸を補えます。",
-    tips: "鶏肉は皮目からじっくり焼くと余分な脂が落ちてパリッと仕上がります。",
-    color: "#e8f4e8",
-  },
-  {
-    day: "火曜日",
-    date: "3/31",
-    main: "豚こまの生姜焼き",
-    side: "キャベツの千切りサラダ",
-    soup: "なめこの味噌汁",
-    time: "20分",
-    cost: 450,
-    ingredients: [
-      "豚こま切れ肉 250g（約150円）",
-      "しょうゆ 大さじ2",
-      "みりん 大さじ2",
-      "しょうが（すりおろし）大さじ1",
-      "キャベツ 1/4個（約80円）",
-      "マヨネーズ 大さじ1",
-      "なめこ 1袋（約100円）",
-      "長ねぎ 少量",
-      "味噌 大さじ1.5",
-      "だし 400ml",
-    ],
-    steps: [
-      "しょうゆ・みりん・しょうがを合わせてタレを作る。豚こまをタレに5分漬ける。",
-      "フライパンを熱し、豚こまを広げて強火で炒める（約4分）。タレを加えて煮絡める。",
-      "キャベツを千切りにして水にさらし、水気を切ってマヨネーズで和える。",
-      "だしを沸かし、なめことねぎを加えて味噌を溶く。",
-    ],
-    nutrition: "豚肉のビタミンB1が疲労回復に。しょうがで体が温まります。",
-    tips: "豚こまは広げて置き、あまり動かさないことで焼き色がきれいに付きます。",
-    color: "#fef4e4",
-  },
-  {
-    day: "水曜日",
-    date: "4/1",
-    main: "鮭の塩焼き",
-    side: "ひじきの煮物",
-    soup: "わかめと豆腐の味噌汁",
-    time: "30分",
-    cost: 520,
-    ingredients: [
-      "生鮭 2切れ（約200円）",
-      "塩 少量",
-      "ひじき（乾燥）20g（約50円）",
-      "にんじん 1/2本（約30円）",
-      "油揚げ 1枚（約30円）",
-      "しょうゆ 大さじ1",
-      "みりん 大さじ1",
-      "砂糖 小さじ1",
-      "わかめ（乾燥）少量（約20円）",
-      "豆腐 半丁（約50円）",
-      "味噌 大さじ1.5",
-    ],
-    steps: [
-      "鮭に塩を振って10分置き、グリルまたはフライパンで両面を焼く（各4〜5分）。",
-      "ひじきを水で戻し、にんじん・油揚げを細切りにして一緒に炒め、調味料で煮含める（約10分）。",
-      "だしを沸かし、戻したわかめと豆腐を入れて味噌を溶く。",
-    ],
-    nutrition: "鮭のDHA・EPAで血液サラサラ効果。ひじきで食物繊維・ミネラルを摂取。",
-    tips: "ひじきの煮物は多めに作って翌日のお弁当にも使えます。",
-    color: "#e8f0fe",
-  },
-  {
-    day: "木曜日",
-    date: "4/2",
-    main: "豆腐ハンバーグ（おろしポン酢）",
-    side: "ブロッコリーのごま和え",
-    soup: "玉ねぎとわかめのスープ",
-    time: "30分",
-    cost: 400,
-    ingredients: [
-      "合いびき肉 150g（約180円）",
-      "木綿豆腐 1/2丁（約50円）",
-      "玉ねぎ 1/2個（約30円）",
-      "卵 1個",
-      "塩・こしょう・ナツメグ 少量",
-      "大根 1/4本（約60円）",
-      "ポン酢 大さじ2",
-      "ブロッコリー 1/2株（約80円）",
-      "すりごま 大さじ2",
-      "しょうゆ 小さじ1、砂糖 小さじ1/2",
-      "コンソメ 1個",
-    ],
-    steps: [
-      "豆腐をよく水切りし、ひき肉・みじん切り玉ねぎ・卵・調味料と混ぜてこねる。小判型に成形する。",
-      "フライパンで両面を焼き（各3〜4分）、蓋をして蒸し焼きにする（3分）。大根おろしとポン酢で仕上げる。",
-      "ブロッコリーを小房に切って塩茹でし、すりごま・しょうゆ・砂糖で和える。",
-      "薄切り玉ねぎ・わかめをコンソメスープで5分煮る。",
-    ],
-    nutrition: "豆腐入りで低カロリー高タンパク。大根おろしの消化酵素で消化を助けます。",
-    tips: "豆腐はキッチンペーパーで包んで重しを乗せると短時間で水切りできます。",
-    color: "#fde8f4",
-  },
-  {
-    day: "金曜日",
-    date: "4/3",
-    main: "麻婆豆腐",
-    side: "もやしのナムル",
-    soup: "かき卵スープ",
-    time: "25分",
-    cost: 430,
-    ingredients: [
-      "絹ごし豆腐 1丁（約80円）",
-      "豚ひき肉 100g（約120円）",
-      "長ねぎ 1/2本",
-      "にんにく・しょうが 各1かけ",
-      "豆板醤 小さじ1",
-      "甜麺醤 小さじ2",
-      "しょうゆ 大さじ1",
-      "鶏がらスープ 200ml",
-      "水溶き片栗粉 適量",
-      "もやし 1袋（約30円）",
-      "ごま油 小さじ1",
-      "卵 2個（約60円）",
-    ],
-    steps: [
-      "フライパンにごま油を熱し、にんにく・しょうがを炒めて香りを出す。ひき肉を加えて色が変わるまで炒める。",
-      "豆板醤・甜麺醤を加えて炒め、スープ・しょうゆを入れて煮立てる。豆腐を加えて3分煮て、水溶き片栗粉でとろみをつける。",
-      "もやしを塩茹でして水気を切り、ごま油・塩・しょうゆで和える。",
-      "鶏がらスープを沸かし、溶き卵を流し入れてふわふわに仕上げる。",
-    ],
-    nutrition: "豆腐は高タンパク低カロリー。もやしのビタミンCが疲れた体に効果的です。",
-    tips: "豆腐は鍋で軽く下茹でしてから入れると崩れにくくなります。",
-    color: "#fff4e4",
-  },
-  {
-    day: "土曜日",
-    date: "4/4",
-    main: "豚バラ大根の煮物",
-    side: "小松菜と油揚げの炒め煮",
-    soup: "なすの味噌汁",
-    time: "40分",
-    cost: 550,
-    ingredients: [
-      "豚バラ薄切り肉 200g（約200円）",
-      "大根 1/2本（約100円）",
-      "しょうゆ 大さじ2",
-      "みりん 大さじ2",
-      "砂糖 大さじ1",
-      "酒 大さじ2",
-      "だし 300ml",
-      "小松菜 1束（約100円）",
-      "油揚げ 1枚（約30円）",
-      "なす 1本（約60円）",
-      "味噌 大さじ1.5",
-    ],
-    steps: [
-      "大根は2cm厚の半月切りにして下茹でする（10分）。豚バラは3cm長さに切る。",
-      "鍋に豚バラを炒めて脂を出し、大根・調味料・だしを入れて落し蓋をして20〜25分煮る。",
-      "小松菜を3cm長さに、油揚げを細切りにして炒め、しょうゆとみりんで味付けする（5分）。",
-      "なすを乱切りにしてだしで煮て、味噌を溶く。",
-    ],
-    nutrition: "大根の消化酵素が豚肉の消化を助けます。小松菜はカルシウムが豊富です。",
-    tips: "大根に竹串がすっと通るまで煮ると味が染みておいしくなります。時間があれば冷ましてから再加熱すると美味。",
-    color: "#e8faf0",
-  },
-  {
-    day: "日曜日",
-    date: "4/5",
-    main: "チキンカレー",
-    side: "グリーンサラダ",
-    soup: "コンソメスープ",
-    time: "45分",
-    cost: 570,
-    ingredients: [
-      "鶏もも肉 300g（約180円）",
-      "玉ねぎ 2個（約80円）",
-      "にんじん 1本（約40円）",
-      "じゃがいも 2個（約80円）",
-      "カレールー 4皿分（約80円）",
-      "サラダ油、塩・こしょう",
-      "レタス 1/4個（約60円）",
-      "きゅうり 1/2本",
-      "ミニトマト 4個（約50円）",
-      "ドレッシング（市販）",
-      "コンソメ 1個",
-    ],
-    steps: [
-      "玉ねぎを薄切りにして飴色になるまで炒める（約15分）。鶏肉・野菜を加えてさらに炒める。",
-      "水600mlを加えて沸騰したらアクを取り、野菜が柔らかくなるまで15分煮る。火を止めてルーを溶かし入れ、さらに10分煮る。",
-      "サラダ野菜を一口大に切って器に盛り、ドレッシングをかける。",
-      "コンソメで薄切り野菜を煮てスープを作る（10分）。",
-    ],
-    nutrition: "カレースパイスが代謝を高めます。野菜たっぷりでビタミン・食物繊維を摂取できます。",
-    tips: "玉ねぎをじっくり炒めることで甘みとコクが出ます。多めに作って翌日のカレーうどんにも活用できます。",
-    color: "#f4f0e8",
-  },
-];
-
-const totalCost = meals.reduce((sum, m) => sum + m.cost, 0);
-
-const shoppingList = {
-  "肉・魚類": [
-    "鶏もも肉 600g（月・日）",
-    "豚こま切れ肉 250g（火）",
-    "生鮭 2切れ（水）",
-    "豚バラ薄切り肉 200g（土）",
-    "合いびき肉 150g（木）",
-    "豚ひき肉 100g（金）",
+const weekData = {
+  title: "週間献立",
+  period: "2026年4月13日（月）〜 4月19日（日）",
+  totalCost: 3200,
+  meals: [
+    {
+      day: "月", date: "4/13",
+      main: "鶏もも肉のトマト煮込み",
+      side: "ほうれん草のおひたし",
+      soup: "キャベツの味噌汁",
+      time: 30,
+      cost: 480,
+      ingredients: ["鶏もも肉 300g", "トマト缶 1/2缶", "玉ねぎ 1/2個", "にんにく 1片", "オリーブ油 大1", "塩・コショウ 適量", "砂糖 小1/2", "ほうれん草 1束", "だし・醤油 適量", "キャベツ 2枚", "味噌 大1"],
+      steps: [
+        "鶏もも肉を一口大に切り、塩コショウで下味をつける",
+        "フライパンにオリーブ油を熱し、鶏肉を皮目から焼いて両面に焼き色をつける",
+        "みじん切りのにんにく・玉ねぎを加えて炒め、トマト缶と砂糖を加えて15分煮込む",
+        "ほうれん草はゆでて絞り、だし醤油で和える。キャベツの味噌汁を作る"
+      ],
+      nutrition: "トマトのリコピンと鶏肉のたんぱく質で免疫力アップ。鉄分豊富なほうれん草も添えて栄養バランス◎",
+      tips: "鶏肉は皮目をしっかり焼くと旨みが増します。トマト缶は完熟のものを選ぶと甘みが出ます"
+    },
+    {
+      day: "火", date: "4/14",
+      main: "豚バラ大根の煮物",
+      side: "もやしのナムル",
+      soup: "豆腐とわかめの味噌汁",
+      time: 40,
+      cost: 450,
+      ingredients: ["豚バラ薄切り 200g", "大根 1/3本", "生姜 1片", "醤油 大2", "みりん 大2", "酒 大2", "砂糖 大1", "もやし 1袋", "ごま油 小1", "塩 少々", "豆腐 1/2丁", "乾燥わかめ 適量", "味噌 大1"],
+      steps: [
+        "大根は1.5cm厚の半月切りにし、豚バラは4cm幅に切る",
+        "鍋に大根を並べ、豚バラと生姜を加えてひたひたの水を入れる",
+        "醤油・みりん・酒・砂糖を加え、落し蓋をして中火で25〜30分煮る",
+        "もやしはゆでてごま油・塩で和える。別鍋で豆腐とわかめの味噌汁を作る"
+      ],
+      nutrition: "大根は消化を助ける酵素が豊富。豚肉のビタミンB1が疲労回復に。もやしでビタミンCも補給",
+      tips: "大根は下茹でしておくと味が染みやすくなります。翌日以降の方が味が染みてさらに美味しい"
+    },
+    {
+      day: "水", date: "4/15",
+      main: "鮭のちゃんちゃん焼き風炒め",
+      side: "ひじきの煮物",
+      soup: "なめこと豆腐の味噌汁",
+      time: 25,
+      cost: 520,
+      ingredients: ["鮭切り身 2切れ", "キャベツ 3枚", "玉ねぎ 1/2個", "ピーマン 2個", "バター 10g", "味噌 大2", "みりん 大1", "酒 大1", "砂糖 小1", "乾燥ひじき 15g", "にんじん 1/4本", "油揚げ 1/2枚", "なめこ 1袋"],
+      steps: [
+        "鮭は一口大に切り、野菜は食べやすい大きさに切る",
+        "味噌・みりん・酒・砂糖を混ぜてタレを作る",
+        "フライパンにバターを熱し、野菜を炒めたら鮭を加え、タレをかけて蒸し焼きにする",
+        "ひじきは戻してにんじん・油揚げと甘辛く煮る。なめこと豆腐の味噌汁を作る"
+      ],
+      nutrition: "鮭のDHAとEPAが血液サラサラに。ひじきは鉄分・カルシウム・食物繊維が豊富で骨の健康に◎",
+      tips: "鮭に焼き色がついてから蒸し焼きにすると旨みが閉じ込められます。味噌タレは焦げやすいので火加減注意"
+    },
+    {
+      day: "木", date: "4/16",
+      main: "麻婆豆腐",
+      side: "きゅうりとわかめの酢の物",
+      soup: "コーンと卵のスープ",
+      time: 20,
+      cost: 380,
+      ingredients: ["木綿豆腐 1丁", "豚ひき肉 150g", "長ねぎ 1/2本", "にんにく 1片", "生姜 1片", "豆板醤 小1", "甜麺醤 大1", "醤油 大1", "鶏がらスープ 150ml", "水溶き片栗粉 適量", "ごま油 小1", "きゅうり 1本", "乾燥わかめ 少々", "酢 大1", "コーン缶 適量", "卵 1個"],
+      steps: [
+        "豆腐は1.5cm角に切って熱湯で温めておく",
+        "フライパンに油を熱し、ひき肉を炒め、にんにく・生姜・長ねぎ・豆板醤・甜麺醤を加えて炒める",
+        "鶏がらスープと醤油を加えて豆腐を入れ、水溶き片栗粉でとろみをつけてごま油をかける",
+        "きゅうりとわかめは酢・砂糖・醤油で和える。コーンと卵のスープを作る"
+      ],
+      nutrition: "豆腐は低カロリー高タンパク。豆板醤の辛み成分カプサイシンが代謝を上げる効果も",
+      tips: "豆腐は下ゆですることで崩れにくくなります。辛さは豆板醤の量で調整してください"
+    },
+    {
+      day: "金", date: "4/17",
+      main: "白菜と豚バラのミルフィーユ蒸し",
+      side: "ごぼうのきんぴら",
+      soup: "玉ねぎの味噌汁",
+      time: 35,
+      cost: 430,
+      ingredients: ["白菜 1/4個", "豚バラ薄切り 200g", "ポン酢 大3", "ごま油 小1", "塩・コショウ 少々", "ごぼう 1/2本", "にんじん 1/4本", "醤油 大1.5", "みりん 大1", "砂糖 小1", "ごま 少々", "玉ねぎ 1/2個", "味噌 大1"],
+      steps: [
+        "白菜は5cm長さに切り、豚バラと交互に重ねる",
+        "鍋に切り口を下にして並べ、塩コショウをして蓋をして中火で20〜25分蒸し焼きにする",
+        "火が通ったらポン酢とごま油をかけて食べる",
+        "ごぼうとにんじんはせん切りにして甘辛く炒める。玉ねぎの味噌汁を作る"
+      ],
+      nutrition: "白菜のビタミンCで風邪予防。ごぼうは食物繊維が豊富で腸内環境を整える。豚肉のビタミンB群も◎",
+      tips: "蒸し焼きにすると白菜の甘みが増します。ポン酢で食べるとさっぱり。お好みで七味唐辛子を"
+    },
+    {
+      day: "土", date: "4/18",
+      main: "チキン南蛮",
+      side: "キャベツの千切りサラダ",
+      soup: "かぼちゃの味噌汁",
+      time: 35,
+      cost: 500,
+      ingredients: ["鶏もも肉 300g", "塩・コショウ 適量", "薄力粉 大2", "卵 1個", "揚げ油 適量", "醤油 大2", "砂糖 大2", "酢 大2", "水 大1", "マヨネーズ 大3", "ゆで卵 1個", "玉ねぎ 1/4個", "キャベツ 3枚", "かぼちゃ 適量"],
+      steps: [
+        "鶏もも肉を一口大に切り、塩コショウして薄力粉と溶き卵をつける",
+        "170〜180℃の油で揚げる（または多めの油でフライパン揚げ）",
+        "醤油・砂糖・酢・水を煮立てて南蛮酢を作り、揚げた鶏肉を絡める",
+        "マヨネーズとみじん切り玉ねぎ・ゆで卵でタルタルソースを作り、鶏肉にかける"
+      ],
+      nutrition: "鶏肉はタンパク質が豊富で低脂質。南蛮酢の酢が疲労回復に効果的。キャベツのビタミンCも摂れる",
+      tips: "揚げすぎると硬くなるので注意。南蛮酢に漬けると味が染みて美味しくなります"
+    },
+    {
+      day: "日", date: "4/19",
+      main: "牛肉とブロッコリーのオイスターソース炒め",
+      side: "大根の浅漬け",
+      soup: "春雨スープ",
+      time: 20,
+      cost: 440,
+      ingredients: ["牛こま切れ肉 200g", "ブロッコリー 1/2株", "にんじん 1/3本", "にんにく 1片", "オイスターソース 大2", "醤油 小1", "酒 大1", "ごま油 小1", "片栗粉 小1", "大根 1/4本", "塩 少々", "酢 小1", "春雨 30g", "鶏がらスープ 400ml"],
+      steps: [
+        "牛肉に酒・片栗粉をもみ込んでおく。ブロッコリーとにんじんは下ゆでする",
+        "フライパンにごま油を熱し、にんにくを炒めて香りを出す",
+        "牛肉を炒め、色が変わったら野菜を加えてオイスターソースと醤油で炒め合わせる",
+        "大根は薄切りにして塩もみし、酢少々で浅漬けに。春雨スープを作る"
+      ],
+      nutrition: "牛肉の鉄分と亜鉛で貧血予防。ブロッコリーのビタミンCが鉄分の吸収を助ける。週末は少し贅沢に◎",
+      tips: "牛肉は炒めすぎると硬くなるので強火で短時間が基本。ブロッコリーは下ゆでで食感よく仕上がります"
+    }
   ],
-  "豆腐・大豆製品": [
-    "木綿豆腐 1丁（月・木）",
-    "絹ごし豆腐 1丁（金）",
-    "油揚げ 2枚（水・土）",
-  ],
-  "野菜類": [
-    "ほうれん草 1束（月）",
-    "キャベツ 1/4個（火）",
-    "にんじん 1.5本（水・日）",
-    "大根 3/4本（木・土）",
-    "ブロッコリー 1/2株（木）",
-    "もやし 1袋（金）",
-    "小松菜 1束（土）",
-    "なす 1本（土）",
-    "玉ねぎ 3.5個（火・木・日）",
-    "長ねぎ 1本（火・金）",
-    "じゃがいも 2個（日）",
-    "レタス 1/4個（日）",
-    "きゅうり 1/2本（日）",
-    "ミニトマト 4個（日）",
-  ],
-  "乾物・加工品": [
-    "ひじき（乾燥）20g（水）",
-    "わかめ（乾燥）少量（水・木）",
-    "なめこ 1袋（火）",
-    "かつお節 少量（月）",
-    "すりごま 少量（木）",
-  ],
-  "調味料・その他": [
-    "カレールー 1箱（日）",
-    "豆板醤・甜麺醤（金）",
-    "ポン酢（木）",
-    "コンソメ 2個（木・日）",
-    "鶏がらスープの素（金）",
-    "卵 3個（木・金）",
-    "味噌（月〜土）",
-    "しょうゆ・みりん・砂糖（共通）",
-  ],
+  shoppingList: {
+    "肉・魚": [
+      "鶏もも肉 600g（月・土）",
+      "豚バラ薄切り 400g（火・金）",
+      "豚ひき肉 150g（木）",
+      "鮭切り身 2切れ（水）",
+      "牛こま切れ肉 200g（日）"
+    ],
+    "野菜": [
+      "大根 中1本（火・日）",
+      "白菜 1/4個（金）",
+      "キャベツ 1/2個（月・水・土）",
+      "ブロッコリー 1/2株（日）",
+      "ほうれん草 1束（月）",
+      "もやし 1袋（火）",
+      "玉ねぎ 2個（月・木・金・土）",
+      "ピーマン 2個（水）",
+      "にんじん 1本（火・水・日）",
+      "ごぼう 1/2本（金）",
+      "長ねぎ 1/2本（木）",
+      "きゅうり 1本（木）",
+      "かぼちゃ 適量（土）",
+      "にんにく 3片（月・木・水・日）",
+      "生姜 2片（火・水）"
+    ],
+    "豆腐・大豆製品": [
+      "木綿豆腐 1丁（木）",
+      "豆腐 1/2丁（水）",
+      "油揚げ 1/2枚（水）"
+    ],
+    "缶詰・乾物": [
+      "トマト缶 1/2缶（月）",
+      "乾燥ひじき 15g（水）",
+      "乾燥わかめ 1袋（火・木）",
+      "なめこ 1袋（水）",
+      "コーン缶 1/2缶（木）",
+      "春雨 30g（日）"
+    ],
+    "卵・乳製品": [
+      "卵 3個（木・土）",
+      "バター 10g（水）"
+    ],
+    "調味料": [
+      "味噌（各種汁物）",
+      "オイスターソース（日）",
+      "甜麺醤（木）",
+      "豆板醤（木）",
+      "ポン酢（金）",
+      "オリーブ油（月）"
+    ]
+  }
 };
 
-function App() {
-  const [selectedDay, setSelectedDay] = useState(0);
-  const [tab, setTab] = useState("menu");
-  const meal = meals[selectedDay];
-
+function CostBar({ cost, maxCost = 600 }) {
+  const pct = Math.min((cost / maxCost) * 100, 100);
+  const color = cost < 400 ? '#4caf50' : cost < 500 ? '#ff9800' : '#f44336';
   return (
-    <div style={{ minHeight: "100vh" }}>
-      <div style={{ background: "linear-gradient(135deg, #2d6a4f, #40916c)", color: "white", padding: "20px 16px", borderRadius: "12px", marginBottom: "16px", textAlign: "center" }}>
-        <div style={{ fontSize: "13px", opacity: 0.85, marginBottom: "4px" }}>献立プラン</div>
-        <div style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "8px" }}>{WEEK}</div>
-        <div style={{ fontSize: "14px", background: "rgba(255,255,255,0.2)", display: "inline-block", padding: "4px 14px", borderRadius: "20px" }}>
-          2人分 週合計 <span style={{ fontWeight: "bold", fontSize: "18px" }}>¥{totalCost.toLocaleString()}</span>
+    <div style={{ background: '#e0e0e0', borderRadius: 4, height: 8, marginTop: 4 }}>
+      <div style={{ width: `${pct}%`, background: color, height: 8, borderRadius: 4, transition: 'width 0.4s' }} />
+    </div>
+  );
+}
+
+function MealCard({ meal, isSelected, onClick }) {
+  const dayColors = {
+    '\u6708': '#5b8dd9', '\u706b': '#e57373', '\u6c34': '#4db6ac',
+    '\u6728': '#81c784', '\u91d1': '#ffb74d', '\u571f': '#ba68c8', '\u65e5': '#e57373'
+  };
+  const color = dayColors[meal.day] || '#888';
+  return (
+    <div
+      onClick={onClick}
+      style={{
+        background: '#fff',
+        border: isSelected ? `2px solid ${color}` : '2px solid transparent',
+        borderRadius: 12,
+        padding: '12px 14px',
+        cursor: 'pointer',
+        boxShadow: isSelected ? `0 4px 16px ${color}44` : '0 2px 8px #0001',
+        transition: 'all 0.2s',
+        marginBottom: 8
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ background: color, color: '#fff', borderRadius: 8, width: 42, height: 42, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <span style={{ fontWeight: 700, fontSize: 16 }}>{meal.day}</span>
+          <span style={{ fontSize: 11 }}>{meal.date}</span>
         </div>
-      </div>
-
-      <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
-        {["menu", "shopping"].map(t => (
-          <button key={t} onClick={() => setTab(t)} style={{
-            flex: 1, padding: "10px", border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "bold", fontSize: "14px",
-            background: tab === t ? "#2d6a4f" : "#e0e0e0", color: tab === t ? "white" : "#555"
-          }}>
-            {t === "menu" ? "献立" : "買い物リスト"}
-          </button>
-        ))}
-      </div>
-
-      {tab === "menu" ? (
-        <div>
-          <div style={{ display: "flex", gap: "6px", marginBottom: "16px", overflowX: "auto", paddingBottom: "4px" }}>
-            {meals.map((m, i) => (
-              <button key={i} onClick={() => setSelectedDay(i)} style={{
-                minWidth: "70px", padding: "8px 4px", border: "2px solid", borderRadius: "10px", cursor: "pointer", textAlign: "center",
-                borderColor: selectedDay === i ? "#2d6a4f" : "transparent",
-                background: selectedDay === i ? "#2d6a4f" : m.color,
-                color: selectedDay === i ? "white" : "#333",
-                fontWeight: selectedDay === i ? "bold" : "normal", fontSize: "13px"
-              }}>
-                <div>{m.day.replace("曜日", "")}</div>
-                <div style={{ fontSize: "11px", opacity: 0.8 }}>{m.date}</div>
-              </button>
-            ))}
-          </div>
-
-          <div style={{ background: meal.color, borderRadius: "12px", padding: "16px", marginBottom: "12px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
-              <div>
-                <span style={{ fontSize: "18px", fontWeight: "bold" }}>{meal.day}</span>
-                <span style={{ fontSize: "13px", color: "#666", marginLeft: "8px" }}>{meal.date}</span>
-              </div>
-              <div style={{ display: "flex", gap: "8px" }}>
-                <span style={{ background: "#fff", padding: "3px 10px", borderRadius: "12px", fontSize: "12px" }}>⏱ {meal.time}</span>
-                <span style={{ background: "#fff", padding: "3px 10px", borderRadius: "12px", fontSize: "12px" }}>¥{meal.cost}</span>
-              </div>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px", marginBottom: "12px" }}>
-              {[["メイン", meal.main], ["副菜", meal.side], ["汁物", meal.soup]].map(([label, val]) => (
-                <div key={label} style={{ background: "rgba(255,255,255,0.7)", borderRadius: "8px", padding: "8px", textAlign: "center" }}>
-                  <div style={{ fontSize: "11px", color: "#666", marginBottom: "2px" }}>{label}</div>
-                  <div style={{ fontSize: "12px", fontWeight: "bold" }}>{val}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div style={{ background: "white", borderRadius: "12px", padding: "16px", marginBottom: "12px" }}>
-            <h3 style={{ fontSize: "14px", fontWeight: "bold", marginBottom: "10px", color: "#2d6a4f" }}>材料（2人分）</h3>
-            <ul style={{ listStyle: "none", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px" }}>
-              {meal.ingredients.map((ing, i) => (
-                <li key={i} style={{ fontSize: "12px", padding: "3px 0", borderBottom: "1px solid #f0f0f0" }}>· {ing}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div style={{ background: "white", borderRadius: "12px", padding: "16px", marginBottom: "12px" }}>
-            <h3 style={{ fontSize: "14px", fontWeight: "bold", marginBottom: "10px", color: "#2d6a4f" }}>調理手順</h3>
-            {meal.steps.map((step, i) => (
-              <div key={i} style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
-                <div style={{ minWidth: "24px", height: "24px", background: "#2d6a4f", color: "white", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "12px", fontWeight: "bold" }}>{i + 1}</div>
-                <div style={{ fontSize: "13px", lineHeight: "1.5", paddingTop: "3px" }}>{step}</div>
-              </div>
-            ))}
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-            <div style={{ background: "#e8f4e8", borderRadius: "10px", padding: "12px" }}>
-              <div style={{ fontSize: "13px", fontWeight: "bold", marginBottom: "6px" }}>栄養ポイント</div>
-              <div style={{ fontSize: "12px", lineHeight: "1.5", color: "#444" }}>{meal.nutrition}</div>
-            </div>
-            <div style={{ background: "#fff8e1", borderRadius: "10px", padding: "12px" }}>
-              <div style={{ fontSize: "13px", fontWeight: "bold", marginBottom: "6px" }}>コツ</div>
-              <div style={{ fontSize: "12px", lineHeight: "1.5", color: "#444" }}>{meal.tips}</div>
-            </div>
-          </div>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontWeight: 700, fontSize: 14 }}>{meal.main}</div>
+          <div style={{ fontSize: 12, color: '#888', marginTop: 2 }}>&#9201; {meal.time}&#20998; &#65295; &#165;{meal.cost}</div>
+          <CostBar cost={meal.cost} />
         </div>
-      ) : (
-        <div>
-          <div style={{ background: "white", borderRadius: "12px", padding: "16px", marginBottom: "12px" }}>
-            <h3 style={{ fontSize: "14px", fontWeight: "bold", marginBottom: "10px", color: "#2d6a4f" }}>今週の献立一覧</h3>
-            {meals.map((m, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "8px", marginBottom: "4px", background: m.color, borderRadius: "8px" }}>
-                <div style={{ minWidth: "50px", fontSize: "12px", fontWeight: "bold" }}>{m.date}({m.day[0]})</div>
-                <div style={{ flex: 1, fontSize: "12px" }}>{m.main}</div>
-                <div style={{ fontSize: "12px", color: "#666" }}>¥{m.cost}</div>
-              </div>
-            ))}
-            <div style={{ textAlign: "right", marginTop: "10px", fontWeight: "bold", fontSize: "15px", color: "#2d6a4f" }}>
-              週合計: ¥{totalCost.toLocaleString()}
-            </div>
-          </div>
-
-          <div style={{ background: "white", borderRadius: "12px", padding: "16px" }}>
-            <h3 style={{ fontSize: "14px", fontWeight: "bold", marginBottom: "12px", color: "#2d6a4f" }}>買い物リスト（カテゴリ別）</h3>
-            {Object.entries(shoppingList).map(([cat, items]) => (
-              <div key={cat} style={{ marginBottom: "14px" }}>
-                <div style={{ fontSize: "13px", fontWeight: "bold", color: "#555", marginBottom: "6px", paddingBottom: "4px", borderBottom: "2px solid #e0f0e8" }}>{cat}</div>
-                <ul style={{ listStyle: "none" }}>
-                  {items.map((item, i) => (
-                    <li key={i} style={{ fontSize: "12px", padding: "3px 0", display: "flex", alignItems: "center", gap: "6px" }}>
-                      <span style={{ color: "#2d6a4f" }}>✓</span> {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <div style={{ textAlign: "center", fontSize: "11px", color: "#aaa", marginTop: "20px", paddingBottom: "10px" }}>
-        Generated by Claude · {new Date().toLocaleDateString("ja-JP")}
+        <div style={{ fontSize: 18 }}>{isSelected ? '▲' : '▼'}</div>
       </div>
     </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App));
+function MealDetail({ meal }) {
+  const dayColors = {
+    '\u6708': '#5b8dd9', '\u706b': '#e57373', '\u6c34': '#4db6ac',
+    '\u6728': '#81c784', '\u91d1': '#ffb74d', '\u571f': '#ba68c8', '\u65e5': '#e57373'
+  };
+  const color = dayColors[meal.day] || '#888';
+  return (
+    <div style={{ background: '#fff', borderRadius: 12, padding: 20, boxShadow: '0 2px 12px #0001', marginBottom: 16 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+        <div style={{ background: color, color: '#fff', borderRadius: 10, padding: '6px 14px', fontWeight: 700, fontSize: 16 }}>
+          {meal.day}曜日 {meal.date}
+        </div>
+        <div>
+          <span style={{ fontSize: 12, color: '#888' }}>&#9201; {meal.time}分</span>
+          <span style={{ fontSize: 12, color: '#888', marginLeft: 12 }}>2人分 &#165;{meal.cost}</span>
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 16 }}>
+        {[["メイン", meal.main], ["副菜", meal.side], ["汁物", meal.soup]].map(([label, val]) => (
+          <div key={label} style={{ background: '#f8f9fa', borderRadius: 8, padding: '8px 12px' }}>
+            <div style={{ fontSize: 12, color: '#888', marginBottom: 4 }}>{label}</div>
+            <div style={{ fontWeight: 600, fontSize: 13 }}>{val}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+        <div>
+          <div style={{ fontWeight: 700, marginBottom: 8, color: color }}>材料（2人分）</div>
+          <ul style={{ paddingLeft: 16, fontSize: 13 }}>
+            {meal.ingredients.map((ing, i) => <li key={i} style={{ marginBottom: 3 }}>{ing}</li>)}
+          </ul>
+        </div>
+        <div>
+          <div style={{ fontWeight: 700, marginBottom: 8, color: color }}>調理手順</div>
+          <ol style={{ paddingLeft: 16, fontSize: 13 }}>
+            {meal.steps.map((step, i) => <li key={i} style={{ marginBottom: 6 }}>{step}</li>)}
+          </ol>
+        </div>
+      </div>
+
+      <div style={{ background: '#f0f8ff', borderRadius: 8, padding: 12, marginBottom: 10 }}>
+        <div style={{ fontWeight: 700, marginBottom: 4, color: '#2196f3' }}>栄養ポイント</div>
+        <div style={{ fontSize: 13 }}>{meal.nutrition}</div>
+      </div>
+      <div style={{ background: '#fffde7', borderRadius: 8, padding: 12 }}>
+        <div style={{ fontWeight: 700, marginBottom: 4, color: '#f9a825' }}>コツ</div>
+        <div style={{ fontSize: 13 }}>{meal.tips}</div>
+      </div>
+    </div>
+  );
+}
+
+function ShoppingTab({ list }) {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 14 }}>
+      {Object.entries(list).map(([category, items]) => (
+        <div key={category} style={{ background: '#fff', borderRadius: 12, padding: 16, boxShadow: '0 2px 8px #0001' }}>
+          <div style={{ fontWeight: 700, marginBottom: 10, color: '#555', borderBottom: '2px solid #eee', paddingBottom: 6 }}>
+            {category}
+          </div>
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            {items.map((item, i) => (
+              <li key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '4px 0', fontSize: 13, borderBottom: i < items.length - 1 ? '1px dashed #eee' : 'none' }}>
+                <span style={{ color: '#4caf50', fontWeight: 700 }}>&#10003;</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function App() {
+  const [tab, setTab] = useState('meals');
+  const [selectedDay, setSelectedDay] = useState(0);
+
+  return (
+    <div>
+      <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: 16, padding: '20px 24px', marginBottom: 20, color: '#fff' }}>
+        <div style={{ fontSize: 13, opacity: 0.85 }}>自動生成 週間献立</div>
+        <div style={{ fontSize: 24, fontWeight: 700, marginTop: 4 }}>{weekData.title}</div>
+        <div style={{ fontSize: 14, opacity: 0.9, marginTop: 4 }}>{weekData.period}</div>
+        <div style={{ marginTop: 10, display: 'flex', gap: 16 }}>
+          <div style={{ background: '#ffffff33', borderRadius: 8, padding: '6px 14px', fontSize: 14 }}>
+            週計 &#165;{weekData.totalCost.toLocaleString()}
+          </div>
+          <div style={{ background: '#ffffff33', borderRadius: 8, padding: '6px 14px', fontSize: 14 }}>
+            2人分
+          </div>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
+        {[['meals', '献立一覧'], ['shopping', '買い物リスト']].map(([key, label]) => (
+          <button key={key} onClick={() => setTab(key)} style={{
+            padding: '10px 20px', borderRadius: 8, border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: 14,
+            background: tab === key ? '#667eea' : '#fff',
+            color: tab === key ? '#fff' : '#555',
+            boxShadow: '0 2px 8px #0001',
+            transition: 'all 0.2s'
+          }}>
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {tab === 'meals' && (
+        <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 20 }}>
+          <div>
+            {weekData.meals.map((meal, i) => (
+              <MealCard key={i} meal={meal} isSelected={selectedDay === i} onClick={() => setSelectedDay(i)} />
+            ))}
+            <div style={{ background: '#fff', borderRadius: 12, padding: 12, boxShadow: '0 2px 8px #0001', marginTop: 8 }}>
+              <div style={{ fontWeight: 700, marginBottom: 8, fontSize: 13, color: '#555' }}>日別コスト</div>
+              {weekData.meals.map((meal, i) => (
+                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 12, marginBottom: 4 }}>
+                  <span>{meal.day} {meal.date}</span>
+                  <span style={{ fontWeight: 600 }}>&#165;{meal.cost}</span>
+                </div>
+              ))}
+              <div style={{ borderTop: '1px solid #eee', marginTop: 8, paddingTop: 8, display: 'flex', justifyContent: 'space-between', fontWeight: 700 }}>
+                <span>合計</span>
+                <span>&#165;{weekData.meals.reduce((s, m) => s + m.cost, 0).toLocaleString()}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <MealDetail meal={weekData.meals[selectedDay]} />
+          </div>
+        </div>
+      )}
+
+      {tab === 'shopping' && <ShoppingTab list={weekData.shoppingList} />}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
 </body>
 </html>
