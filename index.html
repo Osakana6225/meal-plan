@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>週間献立 2026年5月11日〜5月17日</title>
+  <title>週間献立 2026年5月18日〜5月24日</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
@@ -11,39 +11,39 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background: #f0f4f8; color: #333; line-height: 1.6; }
     #root { max-width: 1100px; margin: 0 auto; padding: 16px; }
-    .header { background: linear-gradient(135deg, #ff7e5f, #feb47b); color: #fff; padding: 24px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .header { background: linear-gradient(135deg, #43a047, #66bb6a); color: #fff; padding: 24px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
     .header h1 { font-size: 24px; margin-bottom: 6px; }
     .header .period { font-size: 14px; opacity: 0.95; }
     .summary { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
     .summary-item { background: rgba(255,255,255,0.2); padding: 8px 14px; border-radius: 999px; font-size: 13px; }
     .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
     .tab { flex: 1 1 auto; padding: 10px 12px; background: #fff; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.2s; color: #555; min-width: 80px; text-align: center; }
-    .tab:hover { border-color: #ff7e5f; }
-    .tab.active { background: #ff7e5f; color: #fff; border-color: #ff7e5f; }
-    .tab.shopping { background: #4a90e2; color: #fff; border-color: #4a90e2; }
-    .tab.shopping.active { background: #2e5fa3; border-color: #2e5fa3; }
+    .tab:hover { border-color: #43a047; }
+    .tab.active { background: #43a047; color: #fff; border-color: #43a047; }
+    .tab.shopping { background: #ff8f00; color: #fff; border-color: #ff8f00; }
+    .tab.shopping.active { background: #e65100; border-color: #e65100; }
     .card { background: #fff; border-radius: 12px; padding: 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 16px; }
-    .meal-title { font-size: 20px; font-weight: 700; color: #ff7e5f; border-bottom: 2px solid #ff7e5f; padding-bottom: 8px; margin-bottom: 14px; }
+    .meal-title { font-size: 20px; font-weight: 700; color: #43a047; border-bottom: 2px solid #43a047; padding-bottom: 8px; margin-bottom: 14px; }
     .meal-meta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
-    .meta-badge { background: #fef5e7; color: #b75e00; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+    .meta-badge { background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
     .menu-list { background: #fafbfc; padding: 12px 16px; border-radius: 8px; margin-bottom: 14px; }
     .menu-list .menu-item { padding: 4px 0; font-size: 15px; }
     .menu-label { font-weight: 700; color: #555; display: inline-block; width: 70px; }
-    h3 { font-size: 15px; color: #444; margin: 14px 0 8px; border-left: 4px solid #ff7e5f; padding-left: 8px; }
+    h3 { font-size: 15px; color: #444; margin: 14px 0 8px; border-left: 4px solid #43a047; padding-left: 8px; }
     ul.materials { columns: 2; column-gap: 18px; list-style: none; padding-left: 0; }
     ul.materials li { padding: 3px 0; font-size: 13px; break-inside: avoid; }
-    ul.materials li:before { content: "・"; color: #ff7e5f; }
+    ul.materials li:before { content: "・"; color: #43a047; }
     ol.steps { padding-left: 20px; }
     ol.steps li { padding: 4px 0; font-size: 14px; }
-    .info-box { background: #e8f4f8; border-left: 4px solid #4a90e2; padding: 10px 14px; border-radius: 6px; margin: 8px 0; font-size: 13px; }
-    .tip-box { background: #fef5e7; border-left: 4px solid #f39c12; padding: 10px 14px; border-radius: 6px; margin: 8px 0; font-size: 13px; }
+    .info-box { background: #e8f5e9; border-left: 4px solid #43a047; padding: 10px 14px; border-radius: 6px; margin: 8px 0; font-size: 13px; }
+    .tip-box { background: #fff8e1; border-left: 4px solid #ff8f00; padding: 10px 14px; border-radius: 6px; margin: 8px 0; font-size: 13px; }
     .shopping-category { background: #fff; border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
-    .shopping-category h3 { font-size: 16px; color: #2e5fa3; border-left: 4px solid #4a90e2; margin-top: 0; }
+    .shopping-category h3 { font-size: 16px; color: #e65100; border-left: 4px solid #ff8f00; margin-top: 0; }
     .shopping-list { list-style: none; padding: 0; margin-top: 10px; }
     .shopping-list li { padding: 6px 0; border-bottom: 1px dashed #e2e8f0; font-size: 14px; display: flex; justify-content: space-between; }
     .shopping-list li:last-child { border-bottom: none; }
-    .price { color: #ff7e5f; font-weight: 700; }
-    .total-box { background: linear-gradient(135deg, #4a90e2, #6cb4f5); color: #fff; padding: 18px 22px; border-radius: 12px; font-size: 18px; font-weight: 700; text-align: center; }
+    .price { color: #43a047; font-weight: 700; }
+    .total-box { background: linear-gradient(135deg, #43a047, #66bb6a); color: #fff; padding: 18px 22px; border-radius: 12px; font-size: 18px; font-weight: 700; text-align: center; }
     @media (max-width: 600px) {
       ul.materials { columns: 1; }
       .header h1 { font-size: 20px; }
@@ -52,268 +52,257 @@
   </style>
 </head>
 <body>
-<div id="root"></div>
-<script type="text/babel">
-const { useState } = React;
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
 
-const weekData = {
-  title: "週間献立",
-  period: "2026年5月11日（月）〜 5月17日（日）",
-  totalCost: 3180,
-  meals: [
-    {
-      day: "月", date: "5/11",
-      main: "鶏むね肉の照り焼き",
-      side: "アスパラとベーコンのソテー",
-      soup: "玉ねぎとわかめの味噌汁",
-      time: 25,
-      cost: 440,
-      ingredients: ["鶏むね肉 300g", "片栗粉 大1", "醤油 大2", "みりん 大2", "酒 大1", "砂糖 大1", "サラダ油 小1", "アスパラ 4本", "ベーコン 2枚", "塩・コショウ 適量", "玉ねぎ 1/2個", "乾燥わかめ 適量", "だし汁 400ml", "味噌 大1.5"],
-      steps: [
-        "鶏むね肉をそぎ切りにし、片栗粉をまぶす（しっとり仕上げのコツ）",
-        "フライパンに油を熱して両面を焼き、合わせ調味料（醤油・みりん・酒・砂糖）を加えて絡める",
-        "アスパラは斜め切り、ベーコンは短冊切りにして塩コショウで炒める",
-        "玉ねぎを薄切りにしてだし汁で煮て、わかめと味噌を入れて味噌汁を完成"
-      ],
-      nutrition: "鶏むね肉は高たんぱく低脂質。アスパラのアスパラギン酸で疲労回復、わかめで食物繊維とミネラルを補給",
-      tips: "鶏むね肉は片栗粉でコーティングすると水分が逃げず驚くほどしっとり。タレは火を弱めてから絡めると焦げません"
-    },
-    {
-      day: "火", date: "5/12",
-      main: "豚こまの生姜焼き",
-      side: "切り干し大根の煮物",
-      soup: "豆腐となめこの味噌汁",
-      time: 25,
-      cost: 430,
-      ingredients: ["豚こま切れ 250g", "玉ねぎ 1/2個", "生姜 1片", "醤油 大2", "みりん 大2", "酒 大1", "砂糖 小1", "サラダ油 小1", "切り干し大根 30g", "にんじん 1/3本", "油揚げ 1/2枚", "だし汁 200ml", "醤油・みりん 各大1", "絹豆腐 1/2丁", "なめこ 1/2袋", "味噌 大1.5"],
-      steps: [
-        "切り干し大根を水で戻し、にんじんと油揚げを加えてだし・醤油・みりんで煮含める",
-        "豚こまに薄力粉を軽くまぶし、玉ねぎとともに炒める",
-        "おろし生姜と合わせ調味料を加えて絡め、生姜焼き完成",
-        "だし汁になめこと豆腐を入れ、味噌を溶いて味噌汁を作る"
-      ],
-      nutrition: "豚肉のビタミンB1で糖質代謝サポート、切り干し大根は鉄分・カルシウムが豊富で常備菜にも◎",
-      tips: "豚こまに薄力粉をまぶすとタレが絡みやすく、固くなりにくい。切り干し大根は戻し汁も旨味があるので少量加えると風味アップ"
-    },
-    {
-      day: "水", date: "5/13",
-      main: "さばの味噌煮",
-      side: "ピーマンとちくわのきんぴら",
-      soup: "大根とにんじんの味噌汁",
-      time: 30,
-      cost: 470,
-      ingredients: ["さば切り身 2切れ", "生姜 1片", "味噌 大2", "酒 大3", "みりん 大2", "砂糖 大1", "水 150ml", "ピーマン 3個", "ちくわ 2本", "ごま油 小1", "醤油・みりん 各小2", "白ごま 少々", "大根 1/4本", "にんじん 1/3本", "だし汁 400ml", "味噌 大1.5"],
-      steps: [
-        "さばに熱湯をかけて霜降りし臭み取り。生姜は薄切りに",
-        "鍋に水・酒・みりん・砂糖・生姜を入れ煮立て、さばを並べて落とし蓋で10分",
-        "味噌を溶き入れさらに5分煮詰めてさば味噌煮完成",
-        "ピーマンとちくわを細切りにしてごま油で炒め、調味料と白ごまで仕上げ。味噌汁も作る"
-      ],
-      nutrition: "さばのDHA・EPAで血液サラサラ、ピーマンのビタミンCで免疫力アップ。和の常備菜らしい栄養バランス",
-      tips: "さばは霜降りで臭みを完全に除去。落とし蓋を使うと少量の煮汁でも全体に味が染みます"
-    },
-    {
-      day: "木", date: "5/14",
-      main: "麻婆茄子",
-      side: "もやしと小松菜のごま和え",
-      soup: "卵とねぎの中華スープ",
-      time: 25,
-      cost: 420,
-      ingredients: ["茄子 3本", "豚ひき肉 150g", "長ねぎ 1/2本", "にんにく・生姜 各1片", "豆板醤 小1", "味噌 大1", "醤油 大1", "砂糖 小1", "鶏がらスープ 150ml", "片栗粉・水 各大1", "ごま油 小1", "もやし 1/2袋", "小松菜 1/2束", "白すりごま 大1", "醤油 小1", "卵 1個", "鶏がらスープ 400ml"],
-      steps: [
-        "茄子は乱切りにして油で素揚げ風に焼き、油を切る",
-        "フライパンでにんにく・生姜・豆板醤を炒め、ひき肉を加え、味噌・醤油・砂糖・スープを加える",
-        "茄子を戻し入れ、水溶き片栗粉でとろみ付け、ごま油で香りづけ",
-        "もやしと小松菜を茹でてごま和えに。鶏がらスープで卵とねぎのスープを作る"
-      ],
-      nutrition: "茄子のナスニンは抗酸化作用、ひき肉でたんぱく質補給。小松菜のカルシウムで骨も丈夫に",
-      tips: "茄子は焼く前に皮目に切り目を入れると味が染みやすい。豆板醤の量はお好みで調整を"
-    },
-    {
-      day: "金", date: "5/15",
-      main: "鶏ひき肉のそぼろ丼",
-      side: "ブロッコリーのおかか和え",
-      soup: "豆腐とねぎの味噌汁",
-      time: 20,
-      cost: 410,
-      ingredients: ["鶏ひき肉 250g", "卵 2個", "醤油・みりん 各大2", "砂糖 大1", "酒 大1", "生姜 1片", "ごはん 2杯分", "絵さや 6枚", "ブロッコリー 1/2株", "醤油 小1", "かつお節 1パック", "ごま 少々", "絹豆腐 1/2丁", "長ねぎ 1/2本", "だし汁 400ml", "味噌 大1.5"],
-      steps: [
-        "鶏ひき肉に醤油・みりん・砂糖・酒・生姜を加えて炒り煮し、汁気が飛ぶまで",
-        "卵に砂糖少々を加えて炒り卵を作る",
-        "ごはんにそぼろと炒り卵、茹でた絹さやを乗せて二色丼完成",
-        "ブロッコリーを茹でておかか醤油で和え、味噌汁を作る"
-      ],
-      nutrition: "鶏ひき肉の良質たんぱく＋卵の完全栄養、ブロッコリーのスルフォラファンで抗酸化作用、丼1杯で栄養満点",
-      tips: "そぼろは菜箸4本でかき混ぜると細かく仕上がります。冷めても美味しいのでお弁当にも◎"
-    },
-    {
-      day: "土", date: "5/16",
-      main: "ハンバーグ和風きのこソース",
-      side: "コーンとレタスのサラダ",
-      soup: "コンソメスープ",
-      time: 35,
-      cost: 540,
-      ingredients: ["合いびき肉 250g", "玉ねぎ 1/2個", "パン粉 大3", "牛乳 大2", "卵 1個", "塩・コショウ・ナツメグ 適量", "しめじ 1/2袋", "えのき 1/2袋", "醤油・みりん 各大2", "砂糖 小1", "片栗粉 小1", "レタス 1/4個", "コーン缶 1/2缶", "オリーブ油・レモン汁 適量", "玉ねぎ 1/4個", "にんじん 1/4本", "コンソメ 1個", "水 400ml"],
-      steps: [
-        "玉ねぎをみじん切りにして炒め、パン粉と牛乳をふやかす。ひき肉と全ての材料をよく混ぜ成形",
-        "フライパンで両面焼き色をつけ、蓋をして弱火で6〜7分蒸し焼き",
-        "同じフライパンにきのこを炒め、醤油・みりん・砂糖と水溶き片栗粉でソースを作りハンバーグにかける",
-        "レタスとコーンのサラダ、コンソメスープを準備"
-      ],
-      nutrition: "合いびきの鉄分とビタミンB群、きのこの食物繊維とβグルカンで腸活と免疫力アップに◎",
-      tips: "タネは粘りが出るまでよく練ると割れにくい。蒸し焼きにすることで中までふっくらジューシーに"
-    },
-    {
-      day: "日", date: "5/17",
-      main: "鮭ときのこのバター醤油ホイル焼き",
-      side: "ほうれん草のおひたし",
-      soup: "じゃがいもの味噌汁",
-      time: 25,
-      cost: 470,
-      ingredients: ["生鮭 2切れ", "しめじ 1/2袋", "玉ねぎ 1/4個", "バター 10g", "醤油 大1", "酒 大1", "塩・コショウ 少々", "レモン 1/4個", "ほうれん草 1束", "醤油 小1", "かつお節 少々", "じゃがいも 1個", "玉ねぎ 1/4個", "だし汁 400ml", "味噌 大1.5"],
-      steps: [
-        "鮭に軽く塩コショウ。アルミホイルに玉ねぎスライス、鮭、ほぐしたしめじを乗せる",
-        "バター・醤油・酒をかけてホイルを包み、フライパンで蓋をして弱火10分蒸し焼き",
-        "ほうれん草を茹でてだし醤油とかつお節で和える",
-        "じゃがいもと玉ねぎでだし汁を煮立て、味噌を溶いて味噌汁完成。レモンを添えて"
-      ],
-      nutrition: "鮭のアスタキサンチンは強力な抗酸化作用。きのこの食物繊維とほうれん草の鉄分で週末も健康バランス",
-      tips: "ホイル焼きは洗い物が少なく後片付け楽。フライパン蒸し焼きならオーブン不要で時短"
-    }
-  ],
-  shopping: {
-    "肉・魚": [
-      { name: "鶏むね肉 300g", price: 240 },
-      { name: "豚こま切れ 250g", price: 280 },
-      { name: "さば切り身 2切れ", price: 320 },
-      { name: "豚ひき肉 150g", price: 180 },
-      { name: "鶏ひき肉 250g", price: 280 },
-      { name: "合いびき肉 250g", price: 360 },
-      { name: "生鮭 2切れ", price: 360 },
-      { name: "ベーコン 1パック", price: 180 }
-    ],
-    "野菜": [
-      { name: "玉ねぎ 3個", price: 180 },
-      { name: "長ねぎ 2本", price: 160 },
-      { name: "にんじん 1本", price: 80 },
-      { name: "大根 1/2本", price: 150 },
-      { name: "アスパラ 4本", price: 200 },
-      { name: "ピーマン 1袋", price: 150 },
-      { name: "茄子 3本", price: 180 },
-      { name: "ブロッコリー 1株", price: 200 },
-      { name: "ほうれん草 1束", price: 150 },
-      { name: "小松菜 1束", price: 120 },
-      { name: "もやし 2袋", price: 60 },
-      { name: "レタス 1個", price: 180 },
-      { name: "じゃがいも 2個", price: 100 },
-      { name: "絹さや 1パック", price: 150 },
-      { name: "にんにく・生姜", price: 150 }
-    ],
-    "豆腐・きのこ・卵": [
-      { name: "絹豆腐 2丁", price: 120 },
-      { name: "卵 1パック", price: 220 },
-      { name: "しめじ 1袋", price: 100 },
-      { name: "えのき 1袋", price: 80 },
-      { name: "なめこ 1袋", price: 80 },
-      { name: "油揚げ 1パック", price: 80 },
-      { name: "ちくわ 1袋", price: 100 }
-    ],
-    "乾物・その他": [
-      { name: "切り干し大根 30g", price: 130 },
-      { name: "乾燥わかめ", price: 150 },
-      { name: "かつお節 小パック", price: 100 },
-      { name: "コーン缶 1缶", price: 120 },
-      { name: "パン粉 1袋", price: 100 }
-    ]
-  }
-};
+    const mealData = [
+      {
+        day: "月曜日（5/18）",
+        main: "豚こま肉の生姜焼き",
+        side: "ほうれん草のごま和え",
+        soup: "なめこと豆腐の味噌汁",
+        time: "25分",
+        cost: "約450円",
+        materials: ["豚こま肉 200g", "玉ねぎ 1/2個", "生姜 1片", "醤油 大さじ2", "みりん 大さじ1", "酒 大さじ1", "ほうれん草 1/2束", "すりごま 大さじ2", "砂糖 小さじ1", "なめこ 1袋", "豆腐 1/4ก", "味噌 適量", "キャベツ（付け合わせ）少々"],
+        steps: ["豚こま肉に生姜すりおろし・醤油・みりん・酒を揉み込み10分置く。玉ねぎを薄切りにする。", "フライパンで玉ねぎを炒め、しんなりしたら豚肉をタレごと加えて中火で炒める。", "ほうれん草を茹でて水気を絞り、すりごま・砂糖・醤油少々で和える。味噌汁はなめこと豆腐で仕上げる。"],
+        nutrition: "豚肉のビタミンB1で疲労回復。ほうれん草の鉄分・葉酸も豊富です。",
+        tip: "豚肉は広げて焼くと香ばしく仕上がります。丸めて入れると蒸し焼き状態になるので注意。"
+      },
+      {
+        day: "火曜日（5/19）",
+        main: "鶏むね肉の味噌マヨ焼き",
+        side: "もやしとわかめのナムル",
+        soup: "卵とコーンの中華スープ",
+        time: "20分",
+        cost: "約380円",
+        materials: ["鶏むね肉 1枚(250g)", "味噌 大さじ1", "マヨネーズ 大さじ1.5", "砂糖 小さじ1", "もやし 1袋", "乾燥わかめ 大さじ1", "ごま油 小さじ1", "鶏がらスープの素 小さじ1", "卵 1個", "コーン缶 大さじ3", "塩こしょう 少々", "片栗粉 少々"],
+        steps: ["鶏むね肉をそぎ切りにし、味噌・マヨネーズ・砂糖を混ぜたタレに漬ける。", "フライパンに油を熱し、鶏肉を両面こんがり焼く（蓋をして中まで火を通す）。", "もやしをレンジで加熱し、戻したわかめとごま油・塩・白ごまで和える。溶き卵とコーンでスープを作る。"],
+        nutrition: "鶏むね肉は高たんぱく低脂質。味噌の発酵パワーで消化吸収もアップ。",
+        tip: "鶏むね肉は繊維を断つようにそぎ切りすると柔らかくなります。"
+      },
+      {
+        day: "水曜日（5/20）",
+        main: "麻婆豆腐",
+        side: "きゅうりとツナの酢の物",
+        soup: "わかめスープ",
+        time: "20分",
+        cost: "約420円",
+        materials: ["木綿豆腐 1丁", "豚ひき肉 100g", "長ねぎ 1/2本", "にんにく 1片", "豆板醤 小さじ1", "甜面醤(味噌代用可) 大さじ1", "醤油 大さじ1", "鶏がらスープ 150ml", "片栗粉 大さじ1", "きゅうり 1本", "ツナ缶 1/2缶", "酢 大さじ1.5", "砂糖 小さじ1", "乾燥わかめ 適量", "ごま油 少々"],
+        steps: ["豆腐を2cm角に切り熱湿で温める。長ねぎ・にんにくをみじん切りにする。", "フライパンで豚ひき肉を炒め、にんにく・豆板醤・甜面醤を加え香りを出す。スープ・醤油を入れ豆腐を加え煮る。水溶き片栗粉でとろみ。", "きゅうりを薄切りにし塩もみ、ツナ・酢・砂糖で和える。わかめスープはお湯に鶏がらスープの素で。"],
+        nutrition: "豆腐の大豆イソフラボンと良質たんぱく質。きゅうりのカリウムでむくみ予防。",
+        tip: "豆腐は先に湯通しすると崩れにくく、味もよく染みます。"
+      },
+      {
+        day: "木曜日（5/21）",
+        main: "鮭のちゃんちゃん焼き風",
+        side: "ひじきの煮物",
+        soup: "大根と油揚げの味噌汁",
+        time: "25分",
+        cost: "約520円",
+        materials: ["生鮭切り身 2切れ", "キャベツ 2枚", "玉ねぎ 1/4個", "にんじん 1/4本", "味噌 大さじ2", "みりん 大さじ1", "バター 10g", "乾燥ひじき 大さじ2", "にんじん少々", "油揚げ 1/2枚", "砂糖 大さじ1", "醤油 大さじ1", "大根 3cm", "味噌 適量"],
+        steps: ["鮭に軽く塩をふる。キャベツをざく切り、玉ねぎ・にんじんを薄切りにする。味噌・みりん・砂糖少々を混せタレを作る。", "フライパンにバターを溶かし鮭を両面焼き、野菜を周りに入れタレをかけ蓋をして蒸し焼き5分。", "ひじきを水で戻し、にんじん・油揚げと砂糖・醤油・水で煮る。大根の味噌汁を作る。"],
+        nutrition: "鮭のアスタキサンチンは抗酸化作用大。ひじきで鉄分・食物繊維を補給。",
+        tip: "アルミホイルで包んで焼くと、洗い物が減って後片付けが楽です。"
+      },
+      {
+        day: "金曜日（5/22）",
+        main: "豚バラと白菜のミルフィーユ鍋",
+        side: "かぼちゃの煮物",
+        soup: "（鍋のスープで兼用）",
+        time: "25分",
+        cost: "約480円",
+        materials: ["豚バラ薄切り 200g", "白菜 1/4個", "鶏がらスープの素 大さじ1", "酒 大さじ2", "塩 少々", "ポン酢 適量", "かぼちゃ 1/8個", "砂糖 大さじ1", "醤油 大さじ1", "みりん 大さじ1", "水 適量"],
+        steps: ["白菜と豚バラを交互に重ね、5cm幅に切り鍋に敷き詰める。", "水300ml・鶏がらスープの素・酒を加え、蓋をして中火で15分煮る。ポン酢で食べる。", "かぼちゃを一口大に切り、砂糖・醤油・みりん・水少々で落し蓋をして柔らかくなるまで煮る。"],
+        nutrition: "白菜はビタミンC豊富で低カロリー。かぼちゃのβカロテンで免疫力アップ。",
+        tip: "白菜は芯の部分を下にして並べると均一に火が通ります。"
+      },
+      {
+        day: "土曜日（5/23）",
+        main: "焼きうどん",
+        side: "トマトと大葉のサラダ",
+        soup: "豆腐とねぎの味噌汁",
+        time: "15分",
+        cost: "約350円",
+        materials: ["うどん（茹で）2玉", "豚こま肉 100g", "キャベツ 2枚", "にんじん 1/4本", "ウスターソース 大さじ2", "醤油 大さじ1", "かつお節 適量", "トマト 1個", "大葉 3枚", "ポン酢 大さじ1", "オリーブオイル 少々", "豆腐 1/4丁", "長ねぎ 少々", "味噌 適量"],
+        steps: ["豚こま肉とざく切り野菜をフライパンで炒め、うどんを加えてほぐしながら炒める。", "ウスターソース・醤油で味付けし、皿に盛りかつお節をかける。", "トマトをくし切り、大葉を千切りにしポン酢とオリーブオイルで和える。味噌汁を作る。"],
+        nutrition: "うどんの炭水化物でエネルギー補給。トマトのリコピンで抗酸化。",
+        tip: "うどんは電子レンジで30秒温めてからほぐすと炒めやすいです。"
+      },
+      {
+        day: "日曜日（5/24）",
+        main: "親子丼",
+        side: "小松菜のおひたし",
+        soup: "じゃがいもと玉ねぎの味噌汁",
+        time: "20分",
+        cost: "約400円",
+        materials: ["鶏もも肉 200g", "玉ねぎ 1/2個", "卵 3個", "醤油 大さじ2", "みりん 大さじ2", "砂糖 大さじ1", "だし汁 100ml", "ごはん 2杯分", "小松菜 1/2束", "かつお節 少々", "醤油 少々", "じゃがいも 1個", "玉ねぎ 1/4個", "味噌 適量"],
+        steps: ["鶏もも肉を一口大に切り、玉ねぎを薄切りにする。だし汁・醤油・みりん・砂糖を小鍋で煮立てる。", "鶏肉と玉ねぎを入れ中火で5分煮る。溶き卵を回し入れ蓋をして半熟で火を止め、ごはんに盛る。", "小松菜を茹でて切り、かつお節と醤油で和える。味噌汁はじゃがいもと玉ねぎで。"],
+        nutrition: "鶏もも肉と卵で良質たんぱく質たっぷり。小松菜はカルシウムが豊富。",
+        tip: "卵は2回に分けて入れると、半熟のとろとろ食感に仕上がります。"
+      }
+    ];
 
-function MealCard({ meal }) {
-  return (
-    <div className="card">
-      <div className="meal-title">{meal.day}曜日（{meal.date}）の献立</div>
-      <div className="meal-meta">
-        <span className="meta-badge">⏰ 調理 {meal.time}分</span>
-        <span className="meta-badge">💰 約 ¥{meal.cost}</span>
-      </div>
-      <div className="menu-list">
-        <div className="menu-item"><span className="menu-label">メイン:</span>{meal.main}</div>
-        <div className="menu-item"><span className="menu-label">副菜:</span>{meal.side}</div>
-        <div className="menu-item"><span className="menu-label">汁物:</span>{meal.soup}</div>
-      </div>
-      <h3>材料（2人分）</h3>
-      <ul className="materials">
-        {meal.ingredients.map((ing, i) => <li key={i}>{ing}</li>)}
-      </ul>
-      <h3>調理手順</h3>
-      <ol className="steps">
-        {meal.steps.map((s, i) => <li key={i}>{s}</li>)}
-      </ol>
-      <div className="info-box">
-        <strong>🥗 栄養ポイント:</strong> {meal.nutrition}
-      </div>
-      <div className="tip-box">
-        <strong>💡 コツ:</strong> {meal.tips}
-      </div>
-    </div>
-  );
-}
+    const shoppingData = [
+      {
+        category: "肉類",
+        items: [
+          { name: "豚こま肉 300g", price: "¥350" },
+          { name: "鶏むね肉 1枚(250g)", price: "¥200" },
+          { name: "豚ひき肉 100g", price: "¥120" },
+          { name: "豚バラ薄切り 200g", price: "¥360" },
+          { name: "鶏もも肉 200g", price: "¥240" }
+        ]
+      },
+      {
+        category: "魚類",
+        items: [
+          { name: "生鮭切り身 2切れ", price: "¥380" }
+        ]
+      },
+      {
+        category: "野菜",
+        items: [
+          { name: "玉ねぎ 2個", price: "¥100" },
+          { name: "キャベツ 1/2玉", price: "¥100" },
+          { name: "ほうれん草 1/2束", price: "¥100" },
+          { name: "もやし 1袋", price: "¥30" },
+          { name: "長ねぎ 1本", price: "¥80" },
+          { name: "にんじん 1本", price: "¥60" },
+          { name: "きゅうり 1本", price: "¥60" },
+          { name: "白菜 1/4個", price: "¥100" },
+          { name: "かぼちゃ 1/8個", price: "¥100" },
+          { name: "トマト 1個", price: "¥100" },
+          { name: "小松菜 1/2束", price: "¥80" },
+          { name: "大根 1/4本", price: "¥60" },
+          { name: "じゃがいも 1個", price: "¥40" },
+          { name: "大葉 3枚", price: "¥50" },
+          { name: "生姜 1片", price: "¥50" },
+          { name: "にんにく 1片", price: "¥30" }
+        ]
+      },
+      {
+        category: "豆腐・大豆製品",
+        items: [
+          { name: "木綿豆腐 1丁", price: "¥50" },
+          { name: "絹ごし豆腐 1丁", price: "¥50" },
+          { name: "油揚げ 1枚", price: "¥40" },
+          { name: "なめこ 1袋", price: "¥80" }
+        ]
+      },
+      {
+        category: "乾物・缶詰",
+        items: [
+          { name: "乾燥わかめ", price: "¥100" },
+          { name: "乾燥ひじき", price: "¥100" },
+          { name: "ツナ缶 1個", price: "¥120" },
+          { name: "コーン缶 1個", price: "¥100" }
+        ]
+      },
+      {
+        category: "麺類・穀物",
+        items: [
+          { name: "茹でうどん 2玉", price: "¥60" }
+        ]
+      },
+      {
+        category: "卵・乳製品",
+        items: [
+          { name: "卵 1パック(10個)", price: "¥200" },
+          { name: "バター 少量", price: "¥50" }
+        ]
+      }
+    ];
 
-function ShoppingTab() {
-  const cats = Object.entries(weekData.shopping);
-  const total = cats.reduce((sum, [_, items]) =>
-    sum + items.reduce((s, i) => s + i.price, 0), 0
-  );
-  return (
-    <div>
-      {cats.map(([cat, items]) => (
-        <div key={cat} className="shopping-category">
-          <h3>{cat}</h3>
-          <ul className="shopping-list">
-            {items.map((it, i) => (
-              <li key={i}>
-                <span>{it.name}</span>
-                <span className="price">¥{it.price}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-      <div className="total-box">買い物合計: 約 ¥{total.toLocaleString()}</div>
-    </div>
-  );
-}
+    function App() {
+      const [activeTab, setActiveTab] = useState(0);
 
-function App() {
-  const [active, setActive] = useState(0);
-  const days = weekData.meals.map(m => m.day);
-  return (
-    <div>
-      <div className="header">
-        <h1>🍳 {weekData.title}</h1>
-        <div className="period">{weekData.period}</div>
-        <div className="summary">
-          <span className="summary-item">👥 2人分</span>
-          <span className="summary-item">💴 週合計 約 ¥{weekData.totalCost.toLocaleString()}</span>
-          <span className="summary-item">🍽 7日分の夕食</span>
-        </div>
-      </div>
-      <div className="tabs">
-        {days.map((d, i) => (
-          <div key={i} className={"tab" + (active === i ? " active" : "")} onClick={() => setActive(i)}>
-            {d}（{weekData.meals[i].date}）
+      const totalCost = shoppingData.reduce((sum, cat) => {
+        return sum + cat.items.reduce((s, item) => s + parseInt(item.price.replace(/[^0-9]/g, '')), 0);
+      }, 0);
+
+      return (
+        <div>
+          <div className="header">
+            <h1>週間献立プラン</h1>
+            <div className="period">2026年5月18日（月）〜 5月24日（日）/ 2人分</div>
+            <div className="summary">
+              <span className="summary-item">週間予算: 約3,000〜3,500円</span>
+              <span className="summary-item">買い物合計: ¥{totalCost.toLocaleString()}</span>
+              <span className="summary-item">節約 &amp; 栄養バランス重視</span>
+            </div>
           </div>
-        ))}
-        <div className={"tab shopping" + (active === 7 ? " active" : "")} onClick={() => setActive(7)}>
-          🛒 買い物リスト
-        </div>
-      </div>
-      {active < 7 ? <MealCard meal={weekData.meals[active]} /> : <ShoppingTab />}
-    </div>
-  );
-}
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-</script>
+          <div className="tabs">
+            {mealData.map((meal, idx) => (
+              <div
+                key={idx}
+                className={`tab ${activeTab === idx ? 'active' : ''}`}
+                onClick={() => setActiveTab(idx)}
+              >
+                {meal.day.split("（")[0]}
+              </div>
+            ))}
+            <div
+              className={`tab shopping ${activeTab === 7 ? 'active' : ''}`}
+              onClick={() => setActiveTab(7)}
+            >
+              買い物リスト
+            </div>
+          </div>
+
+          {activeTab < 7 ? (
+            <div className="card">
+              <div className="meal-title">{mealData[activeTab].day}</div>
+              <div className="meal-meta">
+                <span className="meta-badge">調理時間: {mealData[activeTab].time}</span>
+                <span className="meta-badge">費用: {mealData[activeTab].cost}</span>
+              </div>
+              <div className="menu-list">
+                <div className="menu-item"><span className="menu-label">メイン</span>{mealData[activeTab].main}</div>
+                <div className="menu-item"><span className="menu-label">副菜</span>{mealData[activeTab].side}</div>
+                <div className="menu-item"><span className="menu-label">汁物</span>{mealData[activeTab].soup}</div>
+              </div>
+              <h3>材料（2人分）</h3>
+              <ul className="materials">
+                {mealData[activeTab].materials.map((m, i) => <li key={i}>{m}</li>)}
+              </ul>
+              <h3>調理手順</h3>
+              <ol className="steps">
+                {mealData[activeTab].steps.map((s, i) => <li key={i}>{s}</li>)}
+              </ol>
+              <div className="info-box">
+                <strong>栄養ポイント:</strong> {mealData[activeTab].nutrition}
+              </div>
+              <div className="tip-box">
+                <strong>コツ:</strong> {mealData[activeTab].tip}
+              </div>
+            </div>
+          ) : (
+            <div>
+              {shoppingData.map((cat, idx) => (
+                <div key={idx} className="shopping-category">
+                  <h3>{cat.category}</h3>
+                  <ul className="shopping-list">
+                    {cat.items.map((item, i) => (
+                      <li key={i}>
+                        <span>{item.name}</span>
+                        <span className="price">{item.price}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+              <div className="total-box">
+                合計: ¥{totalCost.toLocaleString()}（税込目安）
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
 </body>
 </html>
