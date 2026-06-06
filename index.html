@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>週間献立表 6/1〜6/7</title>
+<title>週間献立表 6/8〜6/14</title>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -17,160 +17,160 @@
 <script type="text/babel">
 const { useState } = React;
 
-const WEEK_LABEL = "2026年6月1日（月）〜 6月7日（日）";
+const WEEK_LABEL = "2026年6月8日（月）〜 6月14日（日）";
 
 const mealData = [
   {
-    day: "月曜日", date: "6/1", main: "豚キムチ炒め",
-    mainDesc: "ピリ辛キムチと豚バラの旨みが白ごはんに最高に合う定番おかず",
-    side: "冷奴のねぎ塩だれ", soup: "わかめと卵のスープ",
-    time: "20分", cost: "約450円",
-    tip: "豚肉は片栗粉をまぶしてから炒めると柔らかく仕上がるよ🍳",
-    nutrition: "豚肉のビタミンB1で疲労回復。キムチの乳酸菌で腸活効果も◎",
-    mainDetail: {
-      ingredients: ["豚バラ薄切り 200g", "白菜キムチ 150g", "玉ねぎ 1/2個（薄切り）", "ニラ 1/2束（4cm幅）", "醤油 大さじ1/2", "みりん 大さじ1/2", "ごま油 大さじ1", "片栗粉 大さじ1", "白ごま 適量"],
-      steps: ["豚バラに片栗粉をまぶす。玉ねぎは薄切り、ニラは4cm幅に切る", "フライパンにごま油を熱し、豚バラを中火で色が変わるまで炒める", "玉ねぎを加えて透き通るまで炒めたら、キムチ・醤油・みりんを加えて2分炒める", "ニラを加えてさっと混ぜ、白ごまをふって完成"]
-    },
-    sideDetail: {
-      ingredients: ["絹ごし豆腐 1丁", "長ねぎ 1/3本（みじん切り）", "ごま油 大さじ1", "塩 小さじ1/4", "レモン汁 小さじ1", "黒こしょう 少々"],
-      steps: ["長ねぎのみじん切りにごま油・塩・レモン汁・黒こしょうを混ぜてたれを作る", "豆腐を皿に盛り、ねぎ塩だれをかける"]
-    },
-    soupDetail: {
-      ingredients: ["乾燥わかめ 大さじ1", "卵 1個", "水 400ml", "鶏がらスープの素 小さじ1", "醤油 小さじ1/2", "塩こしょう 少々", "ごま油 少々"],
-      steps: ["水を沸かし鶏がらスープの素を溶かし、わかめを入れる", "溷き卵を回し入れてふんわり固まったら、醤油・塩こしょうで味を調えごま油をたらす"]
-    }
-  },
-  {
-    day: "火曜日", date: "6/2", main: "鶏むね肉の照り焼き",
-    mainDesc: "しっとり柔らかな鶏むねに甘辛たれが絡む、ごはんが進むメイン",
-    side: "キャベツの塩昆布和え", soup: "豆腐とえのきの味噌汁",
-    time: "25分", cost: "約400円",
-    tip: "鶏むね肉は砂糖と塩を揉み込んで10分置くと驚くほどしっとりするよ🐔",
-    nutrition: "鶏むね肉は高たんぱく低脂肪。キャベツのビタミンCで免疫力アップ",
-    mainDetail: {
-      ingredients: ["鶏むね肉 1枚（約300g）", "砂糖 小さじ1", "塩 小さじ1/4", "片栗粉 大さじ1", "サラダ油 大さじ1", "【たれ】醤油 大さじ2", "みりん 大さじ2", "酒 大さじ1", "砂糖 大さじ1/2"],
-      steps: ["鶏むね肉は厚さを均一にそぎ切りにし、砂糖と塩を揉み込んで10分置き、片栗粉をまぶす", "フライパンに油を熱し、鶏肉を中火で両面こんがり焼く（片面3分ずつ）", "たれの調味料を全て加え、とろみがつくまで絡めながら煮詰める"]
-    },
-    sideDetail: {
-      ingredients: ["キャベツ 1/4個（ざく切り）", "塩昆布 大さじ2", "ごま油 小さじ1", "白ごま 適量"],
-      steps: ["キャベツはざく切りにして耐熱ボウルに入れ、ラップをして600Wで2分加熱", "塩昆布とごま油を加えて混ぜ、白ごまをふる"]
-    },
-    soupDetail: {
-      ingredients: ["絹ごし豆腐 1/2丁", "えのき 1/2袋", "だし汁 400ml", "味噌 大さじ1.5", "小ねぎ 適量"],
-      steps: ["だし汁を温めてえのきを入れ、2分煮る", "豆腐をさいの目に切って加え、火を止めて味噌を溶き入れ、小ねぎを散らす"]
-    }
-  },
-  {
-    day: "水曜日", date: "6/3", main: "焼きさばのおろしポン酢",
-    mainDesc: "カリッと焼いたさばに大根おろしとポン酢でさっぱりいただく",
-    side: "小松菜のおひたし", soup: "じゃがいもと玉ねぎの味噌汁",
-    time: "20分", cost: "約420円",
-    tip: "さばは皮目からしっかり焼くとパリッと仕上がる。身側は短めに焼くのがコツ🐟",
-    nutrition: "さばのDHA・EPAで血液サラサラ。大根おろしの消化酵素で胃腸にやさしい",
-    mainDetail: {
-      ingredients: ["塩さば 2切れ", "大根 5cm（おろす）", "ポン酢 大さじ2", "大葉 2枚（千切り）", "サラダ油 少々"],
-      steps: ["フライパンに薄く油をひき、塩さばを皮目から中火で4分焼く", "裏返して弱火で3分焼き、皿に盛る", "大根おろしの水気を軽く切ってさばに添え、ポン酢をかけて大葉をのせる"]
-    },
-    sideDetail: {
-      ingredients: ["小松菜 1束", "だし汁 大さじ2", "醤油 小さじ1", "かつお節 適量"],
-      steps: ["小松菜は塩茹でして冷水に取り、水気を絞って4cm長さに切る", "だし汁と醤油を合わせてかけ、かつお節をのせる"]
-    },
-    soupDetail: {
-      ingredients: ["じゃがいも 1個（いちょう切り）", "玉ねぎ 1/4個（薄切り）", "だし汁 400ml", "味噌 大さじ1.5", "小ねぎ 適量"],
-      steps: ["だし汁にじゃがいもと玉ねぎを入れ、柔らかくなるまで煮る", "火を止めて味噌を溶き入れ、小ねぎを散らす"]
-    }
-  },
-  {
-    day: "木曜日", date: "6/4", main: "回鍋肉（ホイコーロー）",
-    mainDesc: "甘辛味噌だれでキャベツと豚肉を豪快に炒める中華の人気おかず",
-    side: "もやしとハムのナムル", soup: "トマトと卵の中華スープ",
-    time: "20分", cost: "約430円",
-    tip: "キャベツは先にさっと湯通しすると色鮮やかでシャキシャキに仕上がるよ🥬",
-    nutrition: "豚肉のビタミンB群とキャベツの食物繊維で栄養バランス◎",
-    mainDetail: {
-      ingredients: ["豚バラ薄切り 200g", "キャベツ 1/4個（ざく切り）", "ピーマン 2個（乱切り）", "長ねぎ 1/2本（斜め切り）", "にんにくチューブ 少々", "しょうがチューブ 少々", "豆板醤 小さじ1", "甜面醤 大さじ1.5", "醤油 大さじ1/2", "酒 大さじ1", "砂糖 小さじ1/2", "ごま油 大さじ1"],
-      steps: ["キャベツはざく切りにし、さっと湯通ししてザルに上げる", "フライパンにごま油を熱し、にんにく・しょうが・豆板醤を弱火で香りが出るまで炒める", "豚バラを加えて色が変わるまで炒め、甜面醤・醤油・酒・砂糖を加える", "キャベツ・ピーマン・長ねぎを入れて強火で手早く炒め合わせる"]
-    },
-    sideDetail: {
-      ingredients: ["もやし 1袋", "ハム 3枚（細切り）", "ごま油 大さじ1", "鶏がらスープの素 小さじ1/2", "塩 少々", "白ごま 適量"],
-      steps: ["もやしはさっと茹でて水気を切る", "ハム・ごま油・鶏がらスープの素・塩を加えて和え、白ごまをふる"]
-    },
-    soupDetail: {
-      ingredients: ["トマト 1個（くし切り）", "卵 1個", "水 400ml", "鶏がらスープの素 小さじ1", "塩こしょう 少々", "ごま油 少々", "小ねぎ 適量"],
-      steps: ["水を沸かし鶏がらスープの素を入れ、トマトを加えて2分煮る", "溷き卵を回し入れてふんわり固まったら塩こしょうで味を調え、ごま油と小ねぎを加える"]
-    }
-  },
-  {
-    day: "金曜日", date: "6/5", main: "肉じゃが",
-    mainDesc: "ほくほくのじゃがいもに甘辛い煮汁がしみた、家庭料理の王道",
-    side: "きゅうりとわかめの酢の物", soup: "なめこと三つ葉のすまし汁",
-    time: "35分", cost: "約480円",
-    tip: "落し蓋をすると少ない煮汁でも味がしっかりしみるよ。じゃがいもは煮崩れ防止に面取りを🥔",
-    nutrition: "じゃがいものビタミンCは加熱に強い。牛肉の鉄分で貧血予防にも",
-    mainDetail: {
-      ingredients: ["牛こま切れ肉 150g（豚でもOK）", "じゃがいも 3個（乱切り）", "にんじん 1/2本（乱切り）", "玉ねぎ 1個（くし切り）", "しらたき 100g", "サラダ油 大さじ1", "【煮汁】だし汁 300ml", "醤油 大さじ2.5", "みりん 大さじ2.5", "砂糖 大さじ1.5", "酒 大さじ2"],
-      steps: ["鍋に油を熱し、牛肉を炒めて色が変わったら玉ねぎ・にんじん・じゃがいもを加えて炒める", "煮汁の調味料を全て加え、しらたきも入れて落し蓋をし、中火で20分煮る", "落し蓋を取り、煮汁が少なくなるまで時々混ぜながら5分煮詰める"]
-    },
-    sideDetail: {
-      ingredients: ["きゅうり 1本（薄切り・塩もみ）", "乾燥わかめ 大さじ1（戻す）", "酢 大さじ1.5", "砂糖 小さじ1", "醤油 小さじ1/2", "白ごま 適量"],
-      steps: ["きゅうりは薄切りにして塩もみし、水気を絞る。わかめは水で戻して切る", "酢・砂糖・醤油を混ぜ、きゅうりとわかめを和えて白ごまをふる"]
-    },
-    soupDetail: {
-      ingredients: ["なめこ 1/2袋", "三つ葉 適量", "だし汁 400ml", "醤油 小さじ1", "塩 少々"],
-      steps: ["だし汁を温めてなめこを入れ、1分煮る", "醤油と塩で味を調え、三つ葉を添える"]
-    }
-  },
-  {
-    day: "土曜日", date: "6/6", main: "親子丼",
-    mainDesc: "とろとろ卵と甘辛い鶏肉の黄金コンビ。半熟仕上げがポイント",
-    side: "ほうれん草の白和え", soup: "長ねぎと油揚げの味噌汁",
+    day: "月曜日", date: "6/8", main: "麻婆豆腐",
+    mainDesc: "ピラ辛でごはんが止まらない、本格的な味わいの中華定番おかず",
+    side: "きゅうりの中華たたき", soup: "卵とコーンの中華スープ",
     time: "20分", cost: "約400円",
-    tip: "卵は2回に分けて入れると、とろとろ半熟の絶妙な仕上がりになるよ🥚",
-    nutrition: "鶏肉と卵で良質なたんぱく質がたっぷり。ほうれん草の鉄分も◎",
+    tip: "豆腐は先に塩茹ですると崩れにくく、味もしみやすくなるよ",
+    nutrition: "豆腐の植物性たんぱく質と大豆イソフラボンで健康的。ひき肉のビタミンB群も◎",
     mainDetail: {
-      ingredients: ["鶏もも肉 1枚（小さめに切る）", "玉ねぎ 1/2個（薄切り）", "卵 3個", "ごはん 丼2杯分", "三つ葉 適量", "【煮汁】だし汁 150ml", "醤油 大さじ2", "みりん 大さじ2", "砂糖 大さじ1/2"],
-      steps: ["小さめのフライパンに煮汁を入れて煮立て、玉ねぎを加えて2分煮る", "鶏もも肉を加えて火が通るまで4〜5分煮る", "溶き卵の2/3量を回し入れて蓋をし30秒、残りの卵を入れて半熟で火を止め、丼のごはんにのせて三つ葉を添える"]
+      ingredients: ["木綿豆腐 1丁（さいの目切り）", "豚ひき肉 150g", "長ねぎ 1/2本（みじん切り）", "にんにくチューブ 少々", "しょうがチューブ 少々", "豆板醤 小さじ1", "甜面醤 大さじ1", "醤油 大さじ1", "鶏がらスープの素 小さじ1", "水 150ml", "片栗粉 大さじ1（水大さじ2で溶く）", "ごま油 大さじ1", "山椒 少々"],
+      steps: ["豆腐はさいの目に切り、塩少々を加えた湯で2分茹でてザルに上げる", "フライパンにごま油を煱し、にんにく・しょうが・豆板醤を弱火で炒め、ひき肉を加えて色が変わるまで炒める", "甜面醤・醤油・水・鶏がらスープの素を加えて煮立て、豆腐を入れて3分煮る", "水溶き片栗粉でとろみをつけ、長ねぎと山椒をふって完成"]
     },
     sideDetail: {
-      ingredients: ["ほうれん草 1/2束", "木綿豆腐 1/3丁", "白すりごま 大さじ1", "砂糖 小さじ1", "醤油 小さじ1", "塩 少々"],
-      steps: ["ほうれん草は塩茹でして冷水に取り、水気を絞って3cm長さに切る", "豆腐は水切りしてすり鉢（またはボウル）で潰し、すりごま・砂糖・醤油・塩を混ぜ、ほうれん草を和える"]
+      ingredients: ["きゅうり 2本", "塩 小さじ1/2", "にんにくチューブ 少々", "醤油 大さじ1", "酢 大さじ1/2", "ごま油 大さじ1", "砂糖 小さじ1/2", "ラー油 少々", "白ごま 適量"],
+      steps: ["きゅうりは麺棒などでたたき、手で一口大にちぎる", "塩を振って5分置き水気を切り、にんにく・醤油・酢・ごま油・砂糖・ラー油で和えて白ごまをふる"]
     },
     soupDetail: {
-      ingredients: ["長ねぎ 1/2本（斜め切り）", "油揚げ 1/2枚（短冊切り）", "だし汁 400ml", "味噌 大さじ1.5"],
-      steps: ["だし汁を温めて長ねぎと油揚げを入れ、2分煮る", "火を止めて味噌を溶き入れる"]
+      ingredients: ["卵 1個", "コーン缶 大さじ3", "水 400ml", "鶏がらスープの素 小さじ1", "塩こしょう 少々", "片栗粉 小さじ1（水小さじ2で溶く）", "小ねぎ 適量"],
+      steps: ["水を沸かし鶏がらスープの素とコーンを入れ、水溶き片栗粉でとろみをつける", "溶き卵を回し入れてふんわり固まったら塩こしょうで味を調え、小ねぎを散らす"]
     }
   },
   {
-    day: "日曜日", date: "6/7", main: "エビチリ",
-    mainDesc: "プリプリのエビに甘酸っぱいチリソースが絡む、中華の定番ごちそう",
-    side: "春雨サラダ", soup: "チンゲン菜のミルクスープ",
-    time: "25分", cost: "約520円",
-    tip: "エビは片栗粉と塩で揉み洗いすると臭みが取れてプリプリになるよ🦐",
-    nutrition: "エビは高たんぱく低カロリー。チンゲン菜のカルシウムとミルクで骨を丈夫に",
+    day: "火曜日", date: "6/9", main: "鮭のちゃんちゃん焼き",
+    mainDesc: "味噌バターの香りがたまらない、野菜たっぷり北海道の郷土料理",
+    side: "ひじきの煮物", soup: "大根と油揚げの味噌汁",
+    time: "25分", cost: "約480円",
+    tip: "アルミホイルで包んで蒸し焼きにすると、ふっくらジューシーに仕上がるよ",
+    nutrition: "鮭のアスタキサンチンは強力な抗酸化作用。ひじきの鉄分とカルシウムも豊富",
     mainDetail: {
-      ingredients: ["むきエビ 200g", "片栗粉 大さじ1（下処理用）", "塩 少々（下処理用）", "片栗粉 大さじ1（衣用）", "長ねぎ 1/2本（みじん切り）", "にんにくチュ・ブ 少々", "しょうがチューブ 少々", "サラダ油 大さじ1", "【チリソース】ケチャップ 大さじ3", "水 大さじ3", "酒 大さじ1", "砂糖 大さじ1/2", "鶏がらスープの素 小さじ1/2", "豆板醤 小さじ1", "酢 小さじ1"],
-      steps: ["エビは片栗粉と塩で揉み洗いし、水気を拭いて片栗粉をまぶす", "フライパンに油を熱し、にんにく・しょうが・豆板醤を弱火で炒め、エビを加えて中火で両面焼く", "チリソースの調味料を混せて加え、とろみがつくまで煮絡める", "長ねぎを加えてさっと混ぜて完成"]
+      ingredients: ["生鮭 2切れ", "キャベツ 1/4個（ざく切り）", "玉ねぎ 1/2個（薄切り）", "にんじん 1/4✢（短冊切り）", "しめじ 1/2袋", "バター 10g", "【味噌だれ】味噌 大さじ2", "みりん 大さじ1", "酒 大さじ1", "砂糖 大さじ1/2"],
+      steps: ["味噌だれの調味料を混ぜ合わせる。鮭に軽く塩こしょうをふる", "フライパンにバターを溶かし鮭を両面軽く焼き、周りに野菜ときのこを敷き詰める", "味噌だれを全体にかけて蓋をし、中火で8〜10分蒸し焼きにする"]
     },
     sideDetail: {
-      ingredients: ["春雨 40g", "きゅうり 1/2本（千切り）", "ハム 2枚（千切り）", "にんじん 少々（千切り）", "酢 大さじ1.5", "醤油 大さじ1", "砂糖 小さじ1", "ごま油 小さじ1", "白ごま 適量"],
-      steps: ["春雨は茹でて冷水で冷まし、食べやすい長さに切る。野菜とハムは千切り", "酢・醤油・砂糖・ごま油を混ぜたドレッシングで全て和え、白ごまをふる"]
+      ingredients: ["乾燥ひじき 大さじ2（戻す）", "にんじん 1/4本（千切り）", "油揚げ 1/2枚（短冊切り）", "大豆水煮 50g", "サラダ油 小さじ1", "【煮汁】だし汁 100ml", "醤油 大さじ1", "みりん 大さじ1", "砂糖 小さじ1"],
+      steps: ["ひじきは水で戻し、にんじんは千切り、油揚げは短冊切りにする", "鍋に油を熱し具材を炒め、煮汁を加えて汁気がなくなるまで中火で10分煮る"]
     },
     soupDetail: {
-      ingredients: ["チンゲン菜 1株", "ベーコン 1枚（1cm幅）", "水 200ml", "牛乳 200ml", "鶏がらスープの素 小さじ1", "塩こしょう 少々"],
-      steps: ["水を沸かし鶏がらスープの素とベーコンを入れ、チンゲン菜を加えて2分煮る", "牛乳を加えて沸騰直前まで温め、塩こしょうで味を調える"]
+      ingredients: ["大根 5cm（いちょう切り）", "油揚げ 1/2枚（短冊切り）", "だし汁 400ml", "味噌 大さじ1.5", "小ねぎ 適量"],
+      steps: ["だし汁に大根を入れ柔らかくなるまで煮る。油揚げを加えてひと煮立ち", "火を止めて味噌を溶き入れ、小ねぎを散らす"]
+    }
+  },
+  {
+    day: "水曜日", date: "6/10", main: "豚の生姜焼き",
+    mainDesc: "しょうがの香りが食欲をそそる、みんな大好き定食屋さんの味",
+    side: "ポテトサラダ", soup: "なすとみょうがの味噌汁",
+    time: "20分", cost: "約430円",
+    tip: "タレに漬け込む時間は15分以内がベスト。長すぎると肉が硬くなるよ",
+    nutrition: "豚肉のビタミンB1は疲労回復に最適。しょうがの辛味成分で代謝アップ",
+    mainDetail: {
+      ingredients: ["豚ロース薄切り 250g", "玉ねぎ 1/2個（薄切り）", "サラダ油 大さじ1", "キャベツ千切り 適量（付け合わせ）", "【たれ】醤油 大さじ2", "みりん 大さじ1", "酒 大さじ1", "砂糖 小さじ1", "しょうがすりおろし 大さじ1"],
+      steps: ["たれの調味料を添ぜ、豚肉を10分漬ける", "フライパンに油を熱し玉ねぎを炒め、しんなりしたら端に寄せて豚肉を広げて焼く", "両面焼けたら残ったたれを加え、強火で絡めながら照りを出す。キャベツ千切りを添えて盛り付ける"]
+    },
+    sideDetail: {
+      ingredients: ["じゃがいも 2個", "きゅうり 1/2本（薄切り・塩もみ）", "にんじん 少々（薄切り茹で）", "ハム 2枚（細切り）", "マヨネーズ 大さじ2", "酢 小さじ1", "塩こしょう 少々"],
+      steps: ["じゃがいもは皮をむいて茹で、熱いうちに潰して酢を加える", "冷めたらきゅうり・にんじん・ハム・マヨネーズを加えて混ぜ、塩こしょうで味を調える"]
+    },
+    soupDetail: {
+      ingredients: ["なす 1本（半月切り）", "みょうが 1個（薄切り）", "だし汁 400ml", "味噌 大さじ1.5", "ごま油 少々"],
+      steps: ["だし汁になすを入れ、柔らかくなるまで3分煮る", "火を止めて味噌を溶き入れ、みょうがを添えてごま油を少々たらす"]
+    }
+  },
+  {
+    day: "木曜日", date: "6/11", main: "チキン南蛮",
+    mainDesc: "サクサク衣にタルタルソースがたっぷり、宮崎発祥の人気メニュー",
+    side: "ブロッコリーのおかか和え", soup: "もやしとにらのスープ",
+    time: "30分", cost: "約450円",
+    tip: "鶏むね肉はフォークで穴を開けてから下味をつけると、味がしみてジューシーに",
+    nutrition: "鶏むね肉のイミダペプチドは疲労回復効果が高い。ブロッコリーのビタミンCも豊富",
+    mainDetail: {
+      ingredients: ["鶏むね肉 1枚（約300g）", "塩こしょう 少々", "小麦粉 大さじ2", "溶き卵 1個分", "サラダ油 大さじ3", "【南蛮酢】醤油 大さじ2", "酢 大さじ2", "砂糖 大さじ1.5", "【タルタル】ゆで卵 1個（粗みじん）", "玉ねぎ 少々（みじん切り）", "マヨネーズ 大さじ2", "酢 小さじ1", "塩こしょう 少々"],
+      steps: ["南蛮酢の材料を混ぜておく。タルタルソースも混ぜておく", "鶏むね肉はそぎ切りにし、塩こしょう→小麺粉→溶き卵の順にまぶす", "フライパンに多めの油を熱し、中火で両面こんがり揚げ焼きにする（片面3〜4分）", "熱いうちに南蛮酢に漬け、皿に盛ってタルタルソースをかける"]
+    },
+    sideDetail: {
+      ingredients: ["ブロッコリー 1/2株", "かつお節 1パック", "醤油 小さじ1", "白ごま 適量"],
+      steps: ["ブロッコリーは小房に分け、塩茹でして水気を切る", "かつお節と醤油で和え、白ごまをふる"]
+    },
+    soupDetail: {
+      ingredients: ["もやし 1/2袋", "ニラ 1/4束（3cm幅）", "水 400ml", "鶏がらスープの素 小さじ1", "醤油 小さじ1/2", "塩こしょう 少々", "ごま油 少々"],
+      steps: ["水を沸かし鶏がらスープの素を入れ、もやしとニラを加えて2分煮る", "醤油と塩こしょうで味を調え、ごま油をたらす"]
+    }
+  },
+  {
+    day: "金曜日", date: "6/12", main: "カレイの煮付け",
+    mainDesc: "甘辛い煮汁がしみた、ほろほろの白身魚。和食の基本を味わう一品",
+    side: "かぼちゃの煮物", soup: "しじみの味噌汁",
+    time: "25分", cost: "約500円",
+    tip: "煮汁が沸いてから魚を入れると臭みが出にくい。落し蓋で味を均一に",
+    nutrition: "カレイは低脂肪高たんぱく。かぼちゃのβカロテンで免疫力アップ",
+    mainDetail: {
+      ingredients: ["カレイ切り身 2切れ", "しょうが 1片（薄切り）", "【煮汁】水 150ml", "醤油 大さじ2", "みりん 大さじ2", "酒 大さじ2", "砂糖 大さじ1"],
+      steps: ["カレイの皮目に十字の切り込みを入れ、熱湯をかけて臭みを取る", "鍋に煮汁としょうがを入れて煮立て、カレイを入れて落し蓋をし弱火で12〜15分煮る", "煮汁を時々スプーンでかけながら、照りが出るまで仕上げる"]
+    },
+    sideDetail: {
+      ingredients: ["かぼちゃ 1/8個（一口大）", "だし汁 150ml", "醤油 大さじ1", "みりん 大さじ1", "砂糖 小さじ1"],
+      steps: ["かぼちゃは一口大に切り、皮を下にして鍋に並べる", "だし汁と調味料を加えて落し蓋をし、柔らかくなるまで中火で12分煮る"]
+    },
+    soupDetail: {
+      ingredients: ["しじみ 150g（砂抜き済み）", "水 400ml", "昆布 5cm", "味噌 大さじ1", "小ねぎ 適量"],
+      steps: ["しじみは流水でこすり洗いする。鍋に水と昆布を入れて火にかけ、沸騰前に昆布を取り出す", "しじみを加えて口が開くまで煮て、アクを取り、火を止めて味噌を溶き入れ小ねぎを散らす"]
+    }
+  },
+  {
+    day: "土曜日", date: "6/13", main: "ガパオライス",
+    mainDesc: "バジルの香りとナンプラーの旨みが食欲をそそる、タイ料理の人気メニュー",
+    side: "春雨のエスニックサラダ", soup: "わかめとしめじのスープ",
+    time: "20分", cost: "約420円",
+    tip: "バジルは最後に加えてさっと炒めると香りが飛ばない。目玈焼きは半熟がベスト",
+    nutrition: "鶏ひき肉のたんぱく質とバジルのβカロテン。パプリカのビタミンCも豊富",
+    mainDetail: {
+      ingredients: ["鶏ひき肉 200g", "パプリカ 1/2個（角切り）", "玉ねぎ 1/2個（みじん切り）", "にんにくチューブ 少々", "バジルの葉 10枚（乾燥でもOK）", "卵 2個（目玈焼き用）", "ごはん 2杯分", "サラダ油 大さじ1", "【たれ】ナンプラー 大さじ1.5", "オイスターソース 大さじ1", "醤油 小さじ1", "砂糖 小さじ1/2", "豆板醤 小さじ1/2"],
+      steps: ["フライパンに油を熱し、にんにくを弱火で炒め、鶏ひき肉を加えて色が変わるまで炒める", "玉ねぎとパプリカを加えて2分炒め、たれの調味料を全て加えて炒め合わせる", "バジルの葉を加えてさっと混ぜ、別で焼いた半熟目玉焼きとともにごはんに盛る"]
+    },
+    sideDetail: {
+      ingredients: ["春雨 40g", "きゅうり 1/2本（千切り）", "にんじん 少々（千切り）", "紫玉ねぎ 少々（薄切り・なければ普通の玉ねぎ）", "【ドレッシング】ナンプラー 大さじ1", "レモン汁 大さじ1", "砂糖 小さじ1", "ごま油 小さじ1", "唐辛子 少々"],
+      steps: ["春雨は茹でて冷水で冷まし、食べやすく切る。野菜は千切り・薄切りにする", "ドレッシングを混ぜて全ての具材を和える"]
+    },
+    soupDetail: {
+      ingredients: ["乾燥わかめ 大さじ1", "しめじ 1/2袋", "水 400ml", "鶏がらスープの素 小さじ1", "醤油 小さじ1/2", "塩こしょう 少々", "ごま油 少々", "白ごま 適量"],
+      steps: ["水を沸かし鶏がらスープの素としめじを入れて2分煮る。わかめを加える", "醤油と塩こしょうで味を調え、ごま油をたらして白ごまをふる"]
+    }
+  },
+  {
+    day: "日曜日", date: "6/14", main: "手作りハンバーグ",
+    mainDesc: "ジューシーな肉汁があふれる、おうちで作る洋食の王様",
+    side: "コールスローサラダ", soup: "オニオンコンソメスープ",
+    time: "30分", cost: "約480円",
+    tip: "タネは粘りが出るまでしっかりこねること。焼くときは蓋をして蒸し焼きにするとふっくら",
+    nutrition: "合いびき肉のたんぱく質と鉄分。キャベツの食物繊維で腸内環境を整える",
+    mainDetail: {
+      ingredients: ["合いびき肉 250g", "玉ねぎ 1/2個（みじん切り・炒める）", "パン粉 大さじ3", "牛乳 大さじ2", "卵 1/2個", "塩こしょう 少々", "ナツメグ 少々", "サラダ油 大さじ1", "【ソース】ケチャップ 大さじ3", "ウスターソース 大さじ2", "水 大さじ2", "バター 5g"],
+      steps: ["玉ねぎはみじん切りにしてレンジ600Wで2分加熱し冷ます。パン粉は牛乳で湿らせる", "ボウルにひき肉・玉ねぎ・パン粉・卵・塩こしょう・ナツメグを入れ、粘りが出るまでよくこねて2等分にし、小判型に成形して中央をくぼませる", "フライパンに油を熱し中火で3分焼き、裏返して蓋をし弱火で5分蒸し焼きにする", "ハンバーグを取り出し、同じフライパンにソースの材料を入れて煮立て、ハンバーグにかける"]
+    },
+    sideDetail: {
+      ingredients: ["キャベツ 1/4個（千切り）", "にんじん 少々（千切り）", "コーン缶 大さじ2", "酢 大さじ1", "オリーブオイル 大さじ1", "砂糖 小さじ1", "塩こしょう 少々"],
+      steps: ["キャベツとにんじんを千切りにし、塩少々をふって5分置き水気を絞る", "酢・オリーブオイル・砂糖・塩こしょうを添ぜ、野菜とコーンを和える"]
+    },
+    soupDetail: {
+      ingredients: ["玉ねぎ 1/2個（薄切り）", "ベーコン 1枚（1cm幅）", "水 400ml", "コンソメ顆粒 小さじ1", "塩こしょう 少々", "パセリ 少々", "バター 5g"],
+      steps: ["鍋にバターを溶かし玉ねぎをあめ色になるまで弱火で炒め、ベーコンも加えて炒める", "水とコンソメを加えて5分煮て、塩こしょうで味を調えパセリを散らす"]
     }
   }
 ];
 
 const shoppingList = {
-  "肉類": ["豚バラ薄切り 400g", "鶏むね肉 1枚（約300g）", "鶏もも肉 1枚", "牛こま切れ肉 150g"],
-  "魚介類": ["塩さば 2切れ", "むきエビ 200g"],
-  "豆腐・大豆製品": ["絹ごし豆腐 2丁", "木綿豆腐 1/3丁", "油揚げ 1枚"],
-  "卵・乳製品": ["卵 1パック（10個入り）", "牛乳 200ml"],
-  "野菜": ["白菜キムチ 150g", "玉ねぎ 3個", "ニラ 1/2束", "長ねぎ 2本", "キャベツ 1/2個", "小松菜 1束", "ほうれん草 1/2束", "ピーマン 2個", "もやし 1袋", "トマト 1個", "きゅうり 1.5本", "にんじん 1本", "じゃがいも 3個", "大根 5cm", "チンゲン菜 1株", "三つ葉 1束", "小ねぎ 1束", "大葉 2枚"],
-  "きのこ類": ["えのき 1/2袋", "なめこ 1/2袋"],
-  "乾物・その他": ["乾燥わかめ", "しらたき 100g", "春雨 40g", "塩昆布", "ハム 5枚", "ベーコン 1枚", "かつお節", "白ごま", "白すりごま"],
-  "調味料（常備確認）": ["醤油", "みりん", "酒", "砂糖", "塩", "酢", "味噌", "ごま油", "サラダ油", "鶏がらスープの素", "だしの素", "ポン酢", "ケチャップ", "豆板醤", "甜面醤", "片栗粉", "にんにくチューブ", "しょうがチューブ"]
+  "肉類": ["豚ひき肉 150g", "豚ロース薄切り 250g", "鶏むね肉 1枚（約300g）", "鶏ひき肉 200g", "合いびき肉 250g"],
+  "魚介類": ["生鮭 2切れ", "カレイ切り身 2切れ", "しじみ 150g"],
+  "豆腐・大豆製品": ["木綿豆腐 1丁", "油揚げ 1枚", "大豆水煮 50g"],
+  "卵・乳製品": ["卵 1パック（10個入り）", "牛乳 少量（大さじ2）", "バター 20g"],
+  "野菜": ["玉ねぎ 3個", "キャベツ 1/2個", "にんじん 1本", "きゅうり 2.5本", "じゃがいも 2個", "パプリカ 1/2個", "ブロッコリー 1/2株", "かぼちゃ 1/8個", "なす 1本", "もやし 1/2袋", "長ねぎ 1本", "ニラ 1/4束", "大根 5cm", "しょうが 1片", "みょうが 1個", "紫玉ねぎ 少々", "小ねぎ 1束"],
+  "きのこ類": ["しめじ 1袋"],
+  "乾物・その他": ["乾燥わかめ", "乾燥ひじき 大さじ2", "春雨 40g", "コーン缶 小1缶", "ハム 2枚", "ベーコン 2枚", "パン粉", "かつお節", "白ごま", "バジルの葉（乾燥でもOK）", "昆布 5cm"],
+  "調味料（常備確認）": ["醤油", "みりん", "酒", "砂糖", "塩", "酢", "味噌", "ごま油", "サラダ油", "オリーブオイル", "鶏がらスープの素", "だしの素", "コンソメ顆粒", "ケチャップ", "ウスターソース", "マヨネーズ", "ナンプラー", "オイスターソース", "豆板醤", "甜面醤", "片栗粉", "小麦粉", "にんにくチューブ", "しょうがチューブ", "ラー油", "山椒", "ナツメグ", "レモン汁"]
 };
 
 function App() {
@@ -179,145 +179,154 @@ function App() {
   const [expandedSection, setExpandedSection] = useState(null);
 
   const meal = mealData[selectedDay];
-  const totalCost = "約3,100円";
+  const totalCost = "約3,160円";
 
   const toggleSection = (section) => {
     setExpandedSection(expandedSection === section ? null : section);
   };
 
+  const renderDetail = (title, detail, color) => {
+    const isOpen = expandedSection === title;
+    return (
+      <div style={{marginBottom:'8px'}}>
+        <button onClick={()=>toggleSection(title)} style={{
+          width:'100%',textAlign:'left',padding:'10px 14px',
+          background: isOpen ? color : '#f7fafc',
+          color: isOpen ? '#fff' : '#4a5568',
+          border:'1px solid #e2e8f0',borderRadius:'8px',cursor:'pointer',
+          fontWeight:'600',fontSize:'14px',display:'flex',justifyContent:'space-between',alignItems:'center',
+          transition:'all 0.2s'
+        }}>
+          <span>{title}</span>
+          <span style={{transform:isOpen?'rotate(180deg)':'rotate(0)',transition:'transform 0.2s'}}>▼</span>
+        </button>
+        {isOpen && (
+          <div style={{padding:'12px 14px',background:'#fff',border:'1px solid #e2e8f0',borderTop:'none',borderRadius:'0 0 8px 8px'}}>
+            <div style={{marginBottom:'10px'}}>
+              <div style={{fontWeight:'600',fontSize:'13px',color:'#718096',marginBottom:'6px'}}>材料</div>
+              <div style={{display:'flex',flexWrap:'wrap',gap:'4px'}}>
+                {detail.ingredients.map((item,i) => (
+                  <span key={i} style={{background:'#f7fafc',padding:'3px 8px',borderRadius:'4px',fontSize:'13px',border:'1px solid #e2e8f0'}}>{item}</span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div style={{fontWeight:'600',fontSize:'13px',color:'#718096',marginBottom:'6px'}}>作り方</div>
+              {detail.steps.map((step,i) => (
+                <div key={i} style={{display:'flex',gap:'8px',marginBottom:'6px',fontSize:'13px',lineHeight:'1.5'}}>
+                  <span style={{background:color,color:'#fff',borderRadius:'50%',width:'22px',height:'22px',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0,fontSize:'12px',fontWeight:'700'}}>{i+1}</span>
+                  <span>{step}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
-    <div style={{ maxWidth: 700, margin: "0 auto", padding: "16px" }}>
+    <div style={{maxWidth:'600px',margin:'0 auto',padding:'16px'}}>
       {/* Header */}
-      <div style={{ background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", borderRadius: 16, padding: "24px 20px", marginBottom: 20, color: "#fff", textAlign: "center" }}>
-        <h1 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6 }}>🍽 週間献立表</h1>
-        <p style={{ fontSize: 14, opacity: 0.9 }}>{WEEK_LABEL}</p>
-        <p style={{ fontSize: 13, opacity: 0.8, marginTop: 4 }}>2人分 ・ 週合計 {totalCost}（調味料除く）</p>
+      <div style={{background:'linear-gradient(135deg, #2b6cb0 0%, #4299e1 100%)',borderRadius:'16px',padding:'20px',marginBottom:'16px',color:'#fff',textAlign:'center'}}>
+        <div style={{fontSize:'13px',opacity:0.9,marginBottom:'4px'}}>Weekly Meal Plan</div>
+        <h1 style={{fontSize:'20px',fontWeight:'800',marginBottom:'4px'}}>週間献立表</h1>
+        <div style={{fontSize:'14px',opacity:0.95}}>{WEEK_LABEL}</div>
+        <div style={{fontSize:'13px',marginTop:'8px',background:'rgba(255,255,255,0.2)',display:'inline-block',padding:'4px 12px',borderRadius:'20px'}}>2人分 | 週合計 {totalCost}</div>
       </div>
 
-      {/* Day Tabs */}
-      <div style={{ display: "flex", gap: 6, marginBottom: 16, overflowX: "auto", padding: "4px 0" }}>
-        {mealData.map((m, i) => (
-          <button key={i} onClick={() => { setSelectedDay(i); setExpandedSection(null); setShowShopping(false); }}
-            style={{
-              flex: "0 0 auto", padding: "10px 14px", borderRadius: 12, border: "none",
-              background: selectedDay === i ? "#667eea" : "#fff",
-              color: selectedDay === i ? "#fff" : "#4a5568",
-              fontWeight: 600, fontSize: 13, cursor: "pointer",
-              boxShadow: selectedDay === i ? "0 2px 8px rgba(102,126,234,0.4)" : "0 1px 3px rgba(0,0,0,0.1)",
-              transition: "all 0.2s"
-            }}>
-            <div>{m.day.replace("曜日","")}</div>
-            <div style={{ fontSize: 11, opacity: 0.8, marginTop: 2 }}>{m.date}</div>
+      {/* Day tabs */}
+      <div style={{display:'flex',gap:'4px',marginBottom:'16px',overflowX:'auto',paddingBottom:'4px'}}>
+        {mealData.map((m,i) => (
+          <button key={i} onClick={()=>{setSelectedDay(i);setExpandedSection(null);}} style={{
+            flex:'1',minWidth:'44px',padding:'10px 4px',border:'none',borderRadius:'10px',cursor:'pointer',
+            background: selectedDay===i ? '#4299e1' : '#fff',
+            color: selectedDay===i ? '#fff' : '#4a5568',
+            fontWeight: selectedDay===i ? '700' : '500',
+            fontSize:'12px',boxShadow: selectedDay===i ? '0 2px 8px rgba(66,153,225,0.4)' : '0 1px 3px rgba(0,0,0,0.1)',
+            transition:'all 0.2s'
+          }}>
+            <div>{m.day.replace('曜日','')}</div>
+            <div style={{fontSize:'11px',marginTop:'2px',opacity:0.8}}>{m.date}</div>
           </button>
         ))}
-        <button onClick={() => { setShowShopping(true); setExpandedSection(null); }}
-          style={{
-            flex: "0 0 auto", padding: "10px 14px", borderRadius: 12, border: "none",
-            background: showShopping ? "#48bb78" : "#fff",
-            color: showShopping ? "#fff" : "#48bb78",
-            fontWeight: 600, fontSize: 13, cursor: "pointer",
-            boxShadow: showShopping ? "0 2px 8px rgba(72,187,120,0.4)" : "0 1px 3px rgba(0,0,0,0.1)"
-          }}>
-          🛒<div style={{ fontSize: 11, marginTop: 2 }}>買物</div>
-        </button>
       </div>
 
-      {/* Shopping List */}
-      {showShopping ? (
-        <div style={{ background: "#fff", borderRadius: 16, padding: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}>
-          <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16, color: "#2d3748" }}>🛒 週間買い物リスト</h2>
-          {Object.entries(shoppingList).map(([cat, items]) => (
-            <div key={cat} style={{ marginBottom: 16 }}>
-              <h3 style={{ fontSize: 14, fontWeight: 600, color: "#667eea", marginBottom: 8, borderBottom: "2px solid #e2e8f0", paddingBottom: 4 }}>{cat}</h3>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                {items.map((item, j) => (
-                  <span key={j} style={{ background: "#f7fafc", border: "1px solid #e2e8f0", borderRadius: 8, padding: "4px 10px", fontSize: 13, color: "#4a5568" }}>{item}</span>
+      {/* Main card */}
+      <div style={{background:'#fff',borderRadius:'16px',boxShadow:'0 2px 12px rgba(0,0,0,0.08)',padding:'20px',marginBottom:'12px'}}>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'12px'}}>
+          <h2 style={{fontSize:'18px',fontWeight:'800',color:'#2d3748'}}>{meal.main}</h2>
+          <div style={{display:'flex',gap:'6px'}}>
+            <span style={{background:'#ebf8ff',color:'#2b6cb0',padding:'3px 10px',borderRadius:'20px',fontSize:'12px',fontWeight:'600'}}>{meal.time}</span>
+            <span style={{background:'#f0fff4',color:'#276749',padding:'3px 10px',borderRadius:'20px',fontSize:'12px',fontWeight:'600'}}>{meal.cost}</span>
+          </div>
+        </div>
+        <p style={{fontSize:'14px',color:'#718096',lineHeight:'1.6',marginBottom:'12px'}}>{meal.mainDesc}</p>
+
+        <div style={{display:'flex',gap:'8px',marginBottom:'14px'}}>
+          <div style={{flex:1,background:'#f7fafc',padding:'10px',borderRadius:'8px',textAlign:'center'}}>
+            <div style={{fontSize:'11px',color:'#a0aec0',fontWeight:'600'}}>副菜</div>
+            <div style={{fontSize:'13px',fontWeight:'600',color:'#4a5568',marginTop:'2px'}}>{meal.side}</div>
+          </div>
+          <div style={{flex:1,background:'#f7fafc',padding:'10px',borderRadius:'8px',textAlign:'center'}}>
+            <div style={{fontSize:'11px',color:'#a0aec0',fontWeight:'600'}}>汁物</div>
+            <div style={{fontSize:'13px',fontWeight:'600',color:'#4a5568',marginTop:'2px'}}>{meal.soup}</div>
+          </div>
+        </div>
+
+        {/* Tips and nutrition */}
+        <div style={{background:'#fffbeb',border:'1px solid #fefcbf',borderRadius:'8px',padding:'10px 12px',marginBottom:'10px',fontSize:'13px',lineHeight:'1.5'}}>
+          <span style={{fontWeight:'700',color:'#d69e2e'}}>コツ: </span><span style={{color:'#744210'}}>{meal.tip}</span>
+        </div>
+        <div style={{background:'#f0fff4',border:'1px solid #c6f6d5',borderRadius:'8px',padding:'10px 12px',fontSize:'13px',lineHeight:'1.5'}}>
+          <span style={{fontWeight:'700',color:'#38a169'}}>栄養: </span><span style={{color:'#276749'}}>{meal.nutrition}</span>
+        </div>
+      </div>
+
+      {/* Recipe details */}
+      <div style={{marginBottom:'12px'}}>
+        {renderDetail(`${meal.main} の作り方`, meal.mainDetail, '#4299e1')}
+        {renderDetail(`${meal.side} の作り方`, meal.sideDetail, '#48bb78')}
+        {renderDetail(`${meal.soup} の作り方`, meal.soupDetail, '#ed8936')}
+      </div>
+
+      {/* Shopping list */}
+      <button onClick={()=>setShowShopping(!showShopping)} style={{
+        width:'100%',padding:'14px',background: showShopping ? '#4299e1' : '#fff',
+        color: showShopping ? '#fff' : '#4299e1',
+        border: showShopping ? 'none' : '2px solid #4299e1',
+        borderRadius:'12px',cursor:'pointer',fontWeight:'700',fontSize:'15px',
+        boxShadow:'0 2px 8px rgba(0,0,0,0.08)',transition:'all 0.2s',marginBottom:'12px'
+      }}>
+        {showShopping ? '買い物リストを閉じる' : '買い物リストを見る'}
+      </button>
+
+      {showShopping && (
+        <div style={{background:'#fff',borderRadius:'16px',boxShadow:'0 2px 12px rgba(0,0,0,0.08)',padding:'20px'}}>
+          <h3 style={{fontSize:'16px',fontWeight:'800',marginBottom:'14px',color:'#2d3748'}}>今週の買い物リスト</h3>
+          {Object.entries(shoppingList).map(([category, items]) => (
+            <div key={category} style={{marginBottom:'14px'}}>
+              <div style={{fontSize:'13px',fontWeight:'700',color:'#4299e1',marginBottom:'6px',borderBottom:'2px solid #ebf8ff',paddingBottom:'4px'}}>{category}</div>
+              <div style={{display:'flex',flexWrap:'wrap',gap:'4px'}}>
+                {items.map((item,i) => (
+                  <span key={i} style={{background:'#f7fafc',padding:'4px 10px',borderRadius:'6px',fontSize:'13px',border:'1px solid #e2e8f0'}}>{item}</span>
                 ))}
               </div>
             </div>
           ))}
         </div>
-      ) : (
-        /* Daily Menu */
-        <div style={{ background: "#fff", borderRadius: 16, padding: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}>
-          {/* Menu Summary */}
-          <div style={{ marginBottom: 16 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
-              <h2 style={{ fontSize: 20, fontWeight: 700, color: "#2d3748" }}>{meal.main}</h2>
-              <div style={{ display: "flex", gap: 8 }}>
-                <span style={{ background: "#ebf4ff", color: "#4299e1", padding: "3px 10px", borderRadius: 20, fontSize: 12, fontWeight: 600 }}>⏱ {meal.time}</span>
-                <span style={{ background: "#f0fff4", color: "#48bb78", padding: "3px 10px", borderRadius: 20, fontSize: 12, fontWeight: 600 }}>💰 {meal.cost}</span>
-              </div>
-            </div>
-            <p style={{ fontSize: 13, color: "#718096", marginBottom: 8 }}>{meal.mainDesc}</p>
-            <div style={{ display: "flex", gap: 12, fontSize: 13, color: "#4a5568" }}>
-              <span>📌 副菜: {meal.side}</span>
-              <span>🍲 汁物: {meal.soup}</span>
-            </div>
-          </div>
-
-          {/* Tip */}
-          <div style={{ background: "#fffaf0", border: "1px solid #feebc8", borderRadius: 12, padding: "10px 14px", marginBottom: 16, fontSize: 13, color: "#975a16" }}>
-            💡 {meal.tip}
-          </div>
-
-          {/* Expandable Sections */}
-          {[
-            { key: "main", label: `🥩 ${meal.main}`, detail: meal.mainDetail },
-            { key: "side", label: `🥗 ${meal.side}`, detail: meal.sideDetail },
-            { key: "soup", label: `🍲 ${meal.soup}`, detail: meal.soupDetail }
-          ].map(({ key, label, detail }) => (
-            <div key={key} style={{ marginBottom: 10 }}>
-              <button onClick={() => toggleSection(key)}
-                style={{
-                  width: "100%", padding: "12px 16px", borderRadius: 12,
-                  border: "1px solid #e2e8f0", background: expandedSection === key ? "#f7fafc" : "#fff",
-                  cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center",
-                  fontSize: 14, fontWeight: 600, color: "#2d3748"
-                }}>
-                {label}
-                <span style={{ transform: expandedSection === key ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>▼</span>
-              </button>
-              {expandedSection === key && (
-                <div style={{ padding: "12px 16px", borderLeft: "3px solid #667eea", marginLeft: 8, marginTop: 4 }}>
-                  <div style={{ marginBottom: 12 }}>
-                    <h4 style={{ fontSize: 13, fontWeight: 600, color: "#667eea", marginBottom: 6 }}>材料（2人分）</h4>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-                      {detail.ingredients.map((ing, k) => (
-                        <span key={k} style={{ background: "#edf2f7", borderRadius: 6, padding: "3px 8px", fontSize: 12, color: "#4a5568" }}>{ing}</span>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: 13, fontWeight: 600, color: "#667eea", marginBottom: 6 }}>作り方</h4>
-                    {detail.steps.map((step, k) => (
-                      <div key={k} style={{ display: "flex", gap: 8, marginBottom: 6, fontSize: 13, color: "#4a5568" }}>
-                        <span style={{ background: "#667eea", color: "#fff", borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, flexShrink: 0 }}>{k + 1}</span>
-                        <span style={{ lineHeight: 1.5 }}>{step}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
-
-          {/* Nutrition */}
-          <div style={{ background: "#f0fff4", border: "1px solid #c6f6d5", borderRadius: 12, padding: "10px 14px", marginTop: 12, fontSize: 13, color: "#276749" }}>
-            🥦 栄養ポイント: {meal.nutrition}
-          </div>
-        </div>
       )}
 
       {/* Footer */}
-      <p style={{ textAlign: "center", fontSize: 11, color: "#a0aec0", marginTop: 16 }}>
-        自動生成 by Claude ・ 毎週日曜更新
-      </p>
+      <div style={{textAlign:'center',padding:'16px',fontSize:'12px',color:'#a0aec0'}}>
+        Meal Plan Auto-Generated | {WEEK_LABEL}
+      </div>
     </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 </script>
 </body>
 </html>
