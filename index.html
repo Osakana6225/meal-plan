@@ -1,198 +1,346 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>今週の節約献立（2人分）7/13〜7/19</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>今週の節約献立(2人分)8/10〜8/16</title>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif; background: #f5f3ee; color: #2e2a24; line-height: 1.7; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 20px 16px 60px; }
-  header { text-align: center; padding: 28px 16px; background: linear-gradient(135deg,#5bb0e8,#4689d9); color:#fff; border-radius: 18px; margin-bottom: 22px; box-shadow:0 6px 18px rgba(70,137,217,.25); }
-  header h1 { font-size: 1.6rem; letter-spacing:.02em; }
-  header p { margin-top: 6px; font-size:.95rem; opacity:.95; }
-  .budget { display:inline-block; margin-top:12px; background:rgba(255,255,255,.22); padding:6px 16px; border-radius:999px; font-weight:700; font-size:.95rem; }
-  .tabs { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:20px; }
-  .tab { border:none; background:#fff; color:#6f7a8a; padding:9px 14px; border-radius:12px; font-size:.92rem; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,.06); transition:.15s; font-weight:600; }
-  .tab:hover { transform:translateY(-1px); }
-  .tab.active { background:#4689d9; color:#fff; }
-  .card { background:#fff; border-radius:18px; padding:22px; box-shadow:0 4px 16px rgba(0,0,0,.07); }
-  .day-head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; border-bottom:2px dashed #cee3f2; padding-bottom:12px; margin-bottom:16px; }
-  .day-head h2 { font-size:1.35rem; color:#4689d9; }
-  .day-head .date { color:#99a; font-size:.95rem; }
-  .meta { margin-left:auto; display:flex; gap:8px; }
-  .pill { background:#eef3f8; color:#62748a; padding:4px 12px; border-radius:999px; font-size:.82rem; font-weight:700; }
-  .menu-row { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px; }
-  .menu-item { background:#f2f7fb; border-radius:12px; padding:12px; text-align:center; }
-  .menu-item .label { font-size:.72rem; color:#8ca4bc; font-weight:700; letter-spacing:.08em; }
-  .menu-item .name { font-size:.98rem; font-weight:700; margin-top:4px; }
-  .desc { background:#f0f7fd; border-left:4px solid #5bb0e8; padding:10px 14px; border-radius:8px; font-size:.92rem; color:#4a5c6b; margin-bottom:18px; }
-  .sec { margin-bottom:16px; }
-  .sec h3 { font-size:.98rem; color:#2f7cc2; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
-  .ing { display:grid; grid-template-columns:repeat(2,1fr); gap:4px 18px; }
-  .ing div { font-size:.9rem; border-bottom:1px dotted #eee; padding:3px 0; }
-  ol.steps { padding-left:20px; }
-  ol.steps li { font-size:.92rem; margin-bottom:6px; }
-  .twocol { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  .note { border-radius:10px; padding:12px 14px; font-size:.88rem; }
-  .nutri { background:#eef6ec; border-left:4px solid #6fae5d; color:#456b3a; }
-  .tip { background:#fef6e3; border-left:4px solid #e0a93c; color:#8a6a1f; }
-  .shop .card { padding:22px; }
-  .shop-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
-  .shop-cat h4 { color:#2f7cc2; font-size:1rem; margin-bottom:8px; border-bottom:2px solid #d9e8f4; padding-bottom:4px; }
-  .shop-cat ul { list-style:none; }
-  .shop-cat li { font-size:.9rem; padding:4px 0; border-bottom:1px dotted #eee; display:flex; justify-content:space-between; }
-  .shop-cat li span { color:#99a; }
-  footer { text-align:center; margin-top:26px; color:#8ca4bc; font-size:.82rem; }
-  @media (max-width:600px){ .menu-row{grid-template-columns:1fr;} .ing{grid-template-columns:1fr;} .twocol{grid-template-columns:1fr;} }
+  :root{
+    --bg:#faf7f2; --card:#ffffff; --ink:#2f2a26; --sub:#7c736b;
+    --accent:#e0713a; --accent-soft:#fdeee5; --line:#ece5dc;
+    --green:#4f8a5b; --green-soft:#eaf4ec; --blue:#3f6f9e; --blue-soft:#e9f1f8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+    line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:20px 16px 60px;}
+  header.hero{
+    background:linear-gradient(135deg,#e0713a,#d4552a);
+    color:#fff; border-radius:18px; padding:26px 22px; margin-bottom:20px;
+    box-shadow:0 8px 24px rgba(224,113,58,.22);
+  }
+  .hero h1{margin:0 0 6px; font-size:24px; letter-spacing:.02em;}
+  .hero .range{opacity:.92; font-size:15px; margin-bottom:16px;}
+  .stats{display:flex; gap:10px; flex-wrap:wrap;}
+  .stat{background:rgba(255,255,255,.18); border-radius:12px; padding:9px 14px; font-size:13px;}
+  .stat b{display:block; font-size:19px; line-height:1.3;}
+  .tabs{display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap;}
+  .tab{
+    border:1px solid var(--line); background:var(--card); color:var(--sub);
+    padding:9px 18px; border-radius:999px; font-size:14px; cursor:pointer;
+    font-family:inherit; transition:.15s;
+  }
+  .tab:hover{border-color:var(--accent); color:var(--accent);}
+  .tab.on{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    margin-bottom:12px; overflow:hidden; transition:.15s;
+  }
+  .card.open{box-shadow:0 6px 20px rgba(0,0,0,.07); border-color:#dcd2c6;}
+  .card-head{
+    display:flex; align-items:center; gap:14px; padding:16px 18px; cursor:pointer;
+    user-select:none;
+  }
+  .card-head:hover{background:#fdfbf8;}
+  .daybadge{
+    flex:0 0 46px; height:46px; border-radius:12px; background:var(--accent-soft);
+    color:var(--accent); display:flex; flex-direction:column; align-items:center;
+    justify-content:center; font-weight:700; font-size:15px; line-height:1.1;
+  }
+  .daybadge small{font-size:10px; font-weight:500; opacity:.8;}
+  .head-main{flex:1; min-width:0;}
+  .head-main .main{font-size:16px; font-weight:700; margin-bottom:2px;}
+  .head-main .sides{font-size:12.5px; color:var(--sub);}
+  .head-meta{text-align:right; flex:0 0 auto; font-size:12px; color:var(--sub);}
+  .head-meta .cost{color:var(--accent); font-weight:700; font-size:15px;}
+  .chev{flex:0 0 auto; color:#c3b8ab; font-size:12px; transition:transform .2s;}
+  .chev.up{transform:rotate(180deg);}
+  .body{border-top:1px solid var(--line); padding:18px; background:#fffdfa;}
+  .grid2{display:grid; grid-template-columns:1fr 1.35fr; gap:20px;}
+  @media(max-width:640px){
+    .grid2{grid-template-columns:1fr; gap:16px;}
+    .hero h1{font-size:20px;}
+    .head-main .main{font-size:15px;}
+  }
+  h4.sec{
+    font-size:12px; letter-spacing:.08em; color:var(--sub); margin:0 0 8px;
+    text-transform:uppercase; font-weight:700;
+  }
+  ul.ing{list-style:none; margin:0; padding:0; font-size:13.5px;}
+  ul.ing li{display:flex; justify-content:space-between; gap:10px; padding:5px 0; border-bottom:1px dashed var(--line);}
+  ul.ing li span:last-child{color:var(--sub); flex:0 0 auto;}
+  ol.steps{margin:0; padding-left:20px; font-size:13.5px;}
+  ol.steps li{margin-bottom:8px;}
+  ol.steps li::marker{color:var(--accent); font-weight:700;}
+  .note{border-radius:10px; padding:11px 13px; font-size:13px; margin-top:12px;}
+  .note.n{background:var(--green-soft); border-left:3px solid var(--green);}
+  .note.t{background:var(--blue-soft); border-left:3px solid var(--blue);}
+  .note b{display:block; font-size:11.5px; letter-spacing:.06em; margin-bottom:3px;}
+  .note.n b{color:var(--green);} .note.t b{color:var(--blue);}
+  .shop-cat{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px 18px; margin-bottom:12px;}
+  .shop-cat h3{margin:0 0 10px; font-size:15px; display:flex; align-items:center; gap:8px;}
+  .dot{width:9px; height:9px; border-radius:50%; background:var(--accent);}
+  .shop-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:2px 18px;}
+  .shop-item{display:flex; align-items:center; gap:9px; padding:6px 0; font-size:13.5px; border-bottom:1px dashed var(--line); cursor:pointer;}
+  .shop-item .qty{margin-left:auto; color:var(--sub); font-size:12.5px;}
+  .shop-item.done{opacity:.42; text-decoration:line-through;}
+  .box{width:17px; height:17px; border-radius:5px; border:1.5px solid #cfc4b7; flex:0 0 auto; display:flex; align-items:center; justify-content:center; font-size:11px; color:#fff;}
+  .shop-item.done .box{background:var(--green); border-color:var(--green);}
+  .total{background:var(--accent-soft); border-radius:14px; padding:16px 18px; text-align:center; margin-top:6px;}
+  .total .big{font-size:26px; font-weight:800; color:var(--accent);}
+  .total .cap{font-size:12.5px; color:var(--sub);}
+  footer{text-align:center; color:var(--sub); font-size:12px; margin-top:28px;}
 </style>
 </head>
 <body>
 <div id="root"></div>
-<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
 <script type="text/babel">
 const { useState } = React;
 
-const days = [
+const WEEK = "2026年8月10日(月) 〜 8月16日(日)";
+
+const MENU = [
   {
-    day:"月曜日", date:"7/13",
-    main:"鶏むね肉のみぞれ煮", sub:"ほうれん草のごま和え", soup:"大根と油揚げの味噌汁",
-    time:"25分", cost:"約400円",
-    mainDesc:"安い鶏むね肉を大根おろしでさっぱり。片栗粉をまぶしてやわらかく、暑い日でも食べやすい和おかず",
-    ing:["鶏むね肉 1枚(約250g)","大根 1/3本","片栗粉 大さじ2","醤油・みりん 各大さじ2","砂糖 小さじ1","だし汁 150ml","【副菜】ほうれん草 1袋","すりごま・醤油・砂糖 適量","【汁】大根 少々","油揚げ 1/2枚","味噌・だし 適量"],
-    steps:["鶏むね肉をそぎ切りにし、片栗粉をまぶす","フライパンで両面を焼き、だしと調味料を加える","大根おろしを加えてひと煮立ちさせる","ほうれん草をゆでてごま和えにし、味噌汁を添える"],
-    nutri:"鶏むねの高たんぱく低脂質と大根の消化酵素。夏バテ気味の胃にもやさしい組み合わせ",
-    tip:"むね肉は片栗粉をまぶしてから焼くと、パサつかずしっとり仕上がります"
+    day: "月曜日", date: "8/10", main: "豚こまとなすの味噌炒め",
+    side: "きゅうりとわかめの酢の物", soup: "玉ねぎとお麩の味噌汁",
+    time: 20, cost: 480,
+    ing: [
+      ["豚こま切れ肉", "150g"], ["なす", "2本"], ["ピーマン", "1個"],
+      ["きゅうり", "1本"], ["乾燥わかめ", "2g"], ["玉ねぎ", "1/2個"],
+      ["味噌・みりん・砂糖", "各大1"], ["お麩", "ひとつかみ"]
+    ],
+    steps: [
+      "なすは乱切りにして水に3分さらし、水気を拭く。ピーマンは細切り、豚こまは食べやすく切る。",
+      "フライパンに油大1を熱し、なすを先に炒めて油をなじませる。豚こま・ピーマンを加えて火を通す。",
+      "味噌・みりん・砂糖・醤油小1を混ぜた合わせ調味料を回し入れ、水大2でのばしながら全体に絡める。",
+      "きゅうりは薄切りして塩もみ、戻したわかめと酢大1・砂糖小1で和えて副菜に。"
+    ],
+    nutri: "なすのポリフェノールと豚肉のビタミンB1で夏バテ対策。酢の物のクエン酸が疲労回復を後押しします。",
+    tip: "なすは油を吸いやすいので、最初に多めの油で強火・短時間で炒めると少ない油でもトロッと仕上がります。"
   },
   {
-    day:"火曜日", date:"7/14",
-    main:"夏野菜と豚こまのドライカレー", sub:"千切りキャベツのコールスロー", soup:"卵とレタスの中華スープ",
-    time:"25分", cost:"約450円",
-    mainDesc:"豚こまとみじん切り野菜で作る時短ドライカレー。汁気が少なく暑い日でもさらっと食べられる",
-    ing:["豚こま切れ肉 200g","玉ねぎ 1個","にんじん 1/2本","なす 1本","カレールウ 2かけ","おろしにんにく 少々","ごはん 2膳","【副菜】キャベツ 1/6個","にんじん・マヨネーズ・酢 適量","【汁】卵 1個","レタス 2枚","鶏がらスープの素 小さじ1"],
-    steps:["野菜はすべてみじん切りにする","豚こまと野菜を炒め、しんなりしたら水少々を加える","カレールウを刻んで溶かし、汁気をとばす","キャベツのコールスローと中華スープを添える"],
-    nutri:"みじん切り野菜をたっぷり摂れてビタミン豊富。豚肉のビタミンB1で疲労回復もサポート",
-    tip:"野菜を細かく刻むと火の通りが早く、ルウが少なめでも満足感が出ます"
+    day: "火曜日", date: "8/11", main: "鶏むね肉のよだれ鶏風(レンジ蒸し)",
+    side: "もやしのごまナムル", soup: "トマトと卵の中華スープ",
+    time: 25, cost: 470,
+    ing: [
+      ["鶏むね肉", "2枚(約500g)"], ["もやし", "2袋"], ["トマト", "1個"],
+      ["卵", "2個"], ["長ねぎ", "1/2本"], ["すりごま", "大2"],
+      ["醤油・酢・砂糖", "各大1"], ["ラー油・鶏がらスープの素", "適量"]
+    ],
+    steps: [
+      "鶏むね肉は厚みを開いて酒大1・塩少々をもみ込み、耐熱皿でラップをして600W5分加熱。裏返して余熱で10分置く(しっとり仕上げ)。",
+      "長ねぎのみじん切り・醤油・酢・砂糖・すりごま・ラー油を混ぜてよだれだれを作る。",
+      "もやしはレンジ600W2分、ごま油・鶏がらスープの素・すりごまで和える。",
+      "湯500mlに鶏がらスープの素を溶かし、くし切りトマトを入れ、溶き卵を回し入れてふんわり固める。"
+    ],
+    nutri: "鶏むね肉の高たんぱく低脂質に、トマトのリコピンともやしの食物繊維をプラス。1食あたり約38gのたんぱく質。",
+    tip: "加熱後すぐ切らず余熱で火を通すのがパサつかせないコツ。蒸し汁もたれに混ぜると旨みが増します。"
   },
   {
-    day:"水曜日", date:"7/15",
-    main:"さばの味噌煮", sub:"いんげんのごま和え", soup:"なめこと豆腐の味噌汁",
-    time:"25分", cost:"約430円",
-    mainDesc:"特売のさば切り身をこっくり味噌煮に。しょうがを効かせて臭みなく、ごはんが進む和の定番",
-    ing:["さば切り身 2切れ","しょうが 1片","味噌 大さじ2","砂糖・みりん・酒 各大さじ1","水 150ml","【副菜】いんげん 1袋","すりごま・醤油・砂糖 適量","【汁】なめこ 1袋","絹豆腐 1/2丁","味噌・だし 適量"],
-    steps:["さばは熱湯をかけて霜降りし、臭みを取る","鍋に水・調味料・薄切りしょうがを煮立てさばを入れる","落としぶたをして10分ほど煮て味噌だれを絡める","いんげんをゆでてごま和えにし、味噌汁を添える"],
-    nutri:"さばのDHA・EPAで血液サラサラ。青魚の良質な脂と味噌の発酵パワーで栄養満点",
-    tip:"さばは先に熱湯をかけて霜降りすると、生臭さが抜けて上品な仕上がりに"
+    day: "水曜日", date: "8/12", main: "厚揚げと豚ひき肉のとろとろそぼろあん",
+    side: "ピーマンのおかか和え", soup: "なめこと豆腐の味噌汁",
+    time: 20, cost: 450,
+    ing: [
+      ["厚揚げ", "2枚"], ["豚ひき肉", "150g"], ["ピーマン", "3個"],
+      ["なめこ", "1袋"], ["絹豆腐", "1/2丁"], ["生姜", "1片"],
+      ["醤油・みりん", "各大1.5"], ["片栗粉", "小2"], ["かつお節", "1袋"]
+    ],
+    steps: [
+      "厚揚げは熱湯を回しかけて油抜きし、8等分に切ってフライパンで両面こんがり焼き、皿に取る。",
+      "同じフライパンで豚ひき肉とすりおろし生姜を炒め、水200ml・醤油・みりん・砂糖小1を加えて2分煮る。",
+      "水溶き片栗粉でとろみをつけ、厚揚げにたっぷりかける。",
+      "ピーマンは細切りにしてレンジ600W1分半、醤油小1とかつお節で和える。"
+    ],
+    nutri: "厚揚げは大豆由来のたんぱく質とカルシウムが豊富。肉を減らしてもボリュームが出るので節約日の主役に最適です。",
+    tip: "油抜きすると味が染みやすく、あんもよく絡みます。焼き目をしっかりつけると香ばしさが段違いです。"
   },
   {
-    day:"木曜日", date:"7/16",
-    main:"鶏むねと玉ねぎの照り焼き丼", sub:"きゅうりとちくわの和え物", soup:"わかめとねぎのすまし汁",
-    time:"20分", cost:"約380円",
-    mainDesc:"甘辛だれをからめた鶏むねと玉ねぎをごはんにのせるだけ。洗い物も少なくラクな一杯",
-    ing:["鶏むね肉 1枚(約250g)","玉ねぎ 1/2個","片栗粉 大さじ1","醤油・みりん・砂糖 各大さじ1.5","ごはん 2膳","刻みのり 少々","【副菜】きゅうり 1本","ちくわ 2本","醤油・ごま油 適量","【汁】乾燥わかめ 大さじ1","長ねぎ・だし 適量"],
-    steps:["鶏むねを一口大に切り片栗粉をまぶす","玉ねぎと一緒に焼き、合わせ調味料をからめる","丼にごはんを盛り、具と刻みのりをのせる","きゅうりとちくわを和え、わかめのすまし汁を添える"],
-    nutri:"鶏むねの良質たんぱくと玉ねぎのアリシンでスタミナアップ。丼一杯で満足感も十分",
-    tip:"たれは煮詰めすぎず、とろみが出たら火を止めると照りよく仕上がります"
+    day: "木曜日", date: "8/13", main: "鶏手羽元と大根のさっぱり酢煮",
+    side: "にんじんとツナのラペ", soup: "しめじの澄まし汁",
+    time: 40, cost: 540,
+    ing: [
+      ["鶏手羽元", "6〜8本"], ["大根", "1/3本"], ["ゆで卵", "2個"],
+      ["にんじん", "1本"], ["ツナ缶", "1缶"], ["しめじ", "1/2株"],
+      ["酢", "100ml"], ["醤油・みりん", "各大3"], ["砂糖", "大1"]
+    ],
+    steps: [
+      "大根は1.5cmの半月切り、手羽元は骨に沿って浅く切り込みを入れる。鍋で手羽元の表面を焼き付ける。",
+      "水300ml・酢・醤油・みりん・砂糖を加え、大根を入れて落とし蓋をし、中弱火で25分煮る。",
+      "殻をむいたゆで卵を加えて5分煮からめ、火を止めて10分置いて味を含ませる。",
+      "にんじんは千切りにして塩もみ、水気を絞りツナ・酢大1・オリーブ油小2で和える。"
+    ],
+    nutri: "手羽元のコラーゲンと酢の相乗効果。酢の力で骨から旨みが出やすく、大根にも栄養が溶け出します。",
+    tip: "酢は加熱で酸味が飛んでまろやかな旨みに変わります。翌日はさらに味が染みるので多めに作って作り置きにも。"
   },
   {
-    day:"金曜日", date:"7/17",
-    main:"厚揚げと豚バラのオイスター炒め", sub:"冷やしトマトのサラダ", soup:"春雨と卵のスープ",
-    time:"20分", cost:"約420円",
-    mainDesc:"厚揚げでボリュームを出す節約おかず。オイスターソースのコクで少ない肉でも大満足",
-    ing:["厚揚げ 1枚","豚バラ薄切り 100g","ピーマン 2個","玉ねぎ 1/2個","オイスターソース・醤油 各大さじ1","砂糖 小さじ1","おろしにんにく 少々","【副菜】トマト 1個","玉ねぎ・ポン酢 適量","【汁】春雨 30g","卵 1個","鶏がらスープの素 小さじ1"],
-    steps:["厚揚げは一口大、豚バラと野菜は食べやすく切る","豚バラを炒め、厚揚げと野菜を加えて炒める","オイスターだれを回し入れて手早く絡める","冷やしトマトと春雨スープを添える"],
-    nutri:"厚揚げの植物性たんぱくとカルシウム。豚バラのうまみでコクを出しつつ節約も両立",
-    tip:"厚揚げは表面を焼きつけてから調味すると、香ばしく味がよくからみます"
+    day: "金曜日", date: "8/14", main: "塩さばの香味だれ焼き",
+    side: "小松菜と油揚げの煮浸し", soup: "豆腐とねぎの味噌汁",
+    time: 20, cost: 500,
+    ing: [
+      ["塩さば", "2切れ"], ["長ねぎ", "1本"], ["小松菜", "1束"],
+      ["油揚げ", "1枚"], ["絹豆腐", "1/2丁"], ["大葉", "3枚"],
+      ["醤油・みりん・酢", "各大1"], ["白ごま", "適量"]
+    ],
+    steps: [
+      "塩さばは水気を拭き、皮目から中火で5分、裏返して3分焼く(フライパンならクッキングシート使用)。",
+      "長ねぎと大葉をみじん切りにし、醤油・みりん・酢・ごま油小1と混ぜて香味だれを作る。",
+      "焼き上がったさばにたれをかけ、白ごまを散らす。",
+      "小松菜と油揚げを、だし200ml・醤油大1・みりん大1でさっと煮て煮浸しに。"
+    ],
+    nutri: "さばのDHA・EPAは血流を整える良質な脂質。小松菜のカルシウムと鉄分で栄養バランスが整います。",
+    tip: "塩さばは下味不要でコスパ最強。香味だれの酸味が青魚の脂をさっぱりまとめてくれます。"
   },
   {
-    day:"土曜日", date:"7/18",
-    main:"鮭のちゃんちゃん焼き風", sub:"ポテトサラダ", soup:"キャベツのコンソメスープ",
-    time:"30分", cost:"約480円",
-    mainDesc:"鮭と野菜を味噌だれで蒸し焼きにする北海道の郷土料理。フライパンひとつで彩りよく仕上がる",
-    ing:["生鮭 2切れ","キャベツ 1/6個","玉ねぎ 1/2個","にんじん 1/3本","味噌・みりん・砂糖 各大さじ1","バター 10g","【副菜】じゃがいも 2個","きゅうり・ハム・マヨネーズ 適量","【汁】キャベツ 少々","コンソメ 小さじ1"],
-    steps:["野菜を食べやすく切り、フライパンに敷き鮭をのせる","味噌だれをかけてふたをし、蒸し焼きにする","仕上げにバターを加えて全体を混ぜる","ポテトサラダとコンソメスープを添える"],
-    nutri:"鮭のアスタキサンチンとビタミンD、野菜のビタミンで抗酸化・免疫サポート",
-    tip:"ふたをして蒸し焼きにすると、少ない水分で野菜が甘くやわらかくなります"
+    day: "土曜日", date: "8/15", main: "夏野菜たっぷりドライカレー",
+    side: "キャベツのコールスロー", soup: "コンソメと卵のスープ",
+    time: 30, cost: 520,
+    ing: [
+      ["豚ひき肉", "200g"], ["玉ねぎ", "1個"], ["にんじん", "1/2本"],
+      ["なす", "1本"], ["ピーマン", "2個"], ["キャベツ", "1/4個"],
+      ["カレールー", "2片"], ["ケチャップ・ウスターソース", "各大1"], ["卵", "2個"]
+    ],
+    steps: [
+      "玉ねぎ・にんじん・なす・ピーマンをすべて粗みじん切りにする(5mm角目安)。",
+      "フライパンでひき肉を炒め、色が変わったら野菜を加えて中火で7分、水分を飛ばすように炒める。",
+      "水100ml・刻んだカレールー・ケチャップ・ウスターソースを加え、汁気がなくなるまで煮詰める。ご飯にのせ、温泉卵をトッピング。",
+      "キャベツは細切りにして塩もみし、マヨネーズ大2・酢小1・砂糖ひとつまみで和える。"
+    ],
+    nutri: "野菜を刻んで混ぜ込むことで、1人あたり約200gの野菜が自然に摂れます。スパイスが食欲を刺激。",
+    tip: "水分をしっかり飛ばすのがドライカレーの決め手。多めに作って翌日のお弁当や焼きカレーにも展開できます。"
   },
   {
-    day:"日曜日", date:"7/19",
-    main:"冷やし中華", sub:"枝豆", soup:"中華風コーンスープ",
-    time:"25分", cost:"約450円",
-    mainDesc:"暑い日にうれしい定番冷やし中華。ハム・卵・きゅうりの彩りで見た目も涼やか、洗い物も少なめ",
-    ing:["中華麺 2玉","ハム 3枚","きゅうり 1本","卵 2個","トマト 1個","醤油・酢・砂糖・ごま油 各大さじ1","【副菜】冷凍枝豆 1袋","塩 少々","【汁】コーン缶 1/2缶","卵 1個","鶏がらスープの素 小さじ1"],
-    steps:["薄焼き卵ときゅうり・ハムを細切りにする","中華麺をゆでて冷水でしめ、器に盛る","具を彩りよくのせ、合わせたたれをかける","枝豆を解凍し、コーンスープを添える"],
-    nutri:"具だくさんでたんぱく質とビタミンをバランスよく。酢の酸味で食欲がない日も食べやすい",
-    tip:"麺は氷水でしっかりしめると、コシが出てたれもよくからみます"
+    day: "日曜日", date: "8/16", main: "そうめんチャンプルー",
+    side: "冷やしトマトのおかか乗せ", soup: "わかめと卵のかきたま汁",
+    time: 15, cost: 420,
+    ing: [
+      ["そうめん", "3束"], ["豚こま切れ肉", "100g"], ["にら", "1/2束"],
+      ["にんじん", "1/3本"], ["卵", "2個"], ["トマト", "1個"],
+      ["乾燥わかめ", "2g"], ["めんつゆ・鶏がらスープの素", "適量"]
+    ],
+    steps: [
+      "そうめんは表示より30秒短く茹で、冷水で締めて水気をきり、ごま油小1をまぶしてほぐれやすくする。",
+      "フライパンで豚こまを炒め、にんじん・にらを加えて炒め合わせる。溶き卵を流し入れ半熟で取り出す。",
+      "そうめんを加えて強火で手早く炒め、めんつゆ大2・鶏がらスープの素小1/2で味を調え、卵を戻して混ぜる。",
+      "トマトはくし切りにして冷やし、かつお節と醤油少々をかけて副菜に。"
+    ],
+    nutri: "残りがちなそうめんを主食兼おかずに。豚肉・卵・にらでたんぱく質とビタミンB群を補強します。",
+    tip: "ごま油をまぶしておくと炒めてもベタつきません。週末は冷蔵庫の余り野菜を入れて使い切りデーに。"
   }
 ];
 
-const shopping = {
-  "肉・魚":[["鶏むね肉","2枚(約500g)"],["豚こま切れ肉","200g"],["豚バラ薄切り","100g"],["さば切り身","2切れ"],["生鮭","2切れ"],["ハム","5枚"],["ちくわ","2本"]],
-  "野菜":[["大根","1/2本"],["ほうれん草","1袋"],["玉ねぎ","3個"],["にんじん","1.5本"],["なす","1本"],["キャベツ","1/2個"],["いんげん","1袋"],["ピーマン","2個"],["トマト","2個"],["きゅうり","3本"],["レタス","少量"],["じゃがいも","2個"],["しょうが","1片"],["長ねぎ","少量"]],
-  "豆腐・大豆製品":[["厚揚げ","1枚"],["絹豆腐","1/2丁"],["油揚げ","1/2枚"]],
-  "卵・乳":[["卵","6個"],["バター","少量"]],
-  "缶詰・乾物":[["コーン缶","1缶"],["乾燥わかめ","少量"],["なめこ","1袋"],["春雨","30g"],["中華麺","2玉"],["冷凍枝豆","1袋"]],
-  "調味料・その他":[["カレールウ","2かけ"],["オイスターソース","少量"],["味噌・醤油・みりん","常備"],["酢・ポン酢・ごま油","各少量"],["ごはん用米","適量"]]
-};
+const SHOPPING = [
+  { cat: "肉・魚", items: [["豚こま切れ肉","250g / 約420円"],["鶏むね肉","2枚 / 約300円"],["豚ひき肉","350g / 約470円"],["鶏手羽元","6〜8本 / 約350円"],["塩さば","2切れ / 約300円"],["ツナ缶","1缶 / 約100円"]] },
+  { cat: "野菜", items: [["なす","3本 / 約180円"],["ピーマン","6個 / 約150円"],["きゅうり","1本 / 約60円"],["玉ねぎ","2個 / 約100円"],["トマト","2個 / 約200円"],["もやし","2袋 / 約60円"],["長ねぎ","1.5本 / 約130円"],["大根","1/3本 / 約90円"],["にんじん","2本 / 約120円"],["小松菜","1束 / 約120円"],["キャベツ","1/4個 / 約80円"],["にら","1/2束 / 約60円"],["しめじ・なめこ","各1袋 / 約160円"],["生姜・大葉","各1 / 約120円"]] },
+  { cat: "豆腐・卵・大豆製品", items: [["厚揚げ","2枚 / 約140円"],["絹豆腐","1丁 / 約60円"],["油揚げ","1枚 / 約40円"],["卵","1パック / 約240円"]] },
+  { cat: "主食・乾物・調味料", items: [["そうめん","3束 / 約100円"],["カレールー","1箱(2片使用) / 約100円"],["乾燥わかめ・お麩","各1 / 約150円"],["すりごま・白ごま","適量 / 約100円"],["米","※常備"],["醤油・味噌・酢・みりん・砂糖","※常備"]] }
+];
 
-function Card({d}){
+function Day({ d, open, onToggle }) {
   return (
-    <div className="card">
-      <div className="day-head">
-        <h2>{d.day}</h2><span className="date">{d.date}</span>
-        <div className="meta"><span className="pill">⏱ {d.time}</span><span className="pill">💰 {d.cost}</span></div>
+    <div className={"card" + (open ? " open" : "")}>
+      <div className="card-head" onClick={onToggle}>
+        <div className="daybadge">{d.day.charAt(0)}<small>{d.date}</small></div>
+        <div className="head-main">
+          <div className="main">{d.main}</div>
+          <div className="sides">{d.side} ／ {d.soup}</div>
+        </div>
+        <div className="head-meta">
+          <div className="cost">約{d.cost}円</div>
+          <div>{d.time}分</div>
+        </div>
+        <div className={"chev" + (open ? " up" : "")}>▼</div>
       </div>
-      <div className="menu-row">
-        <div className="menu-item"><div className="label">メイン</div><div className="name">{d.main}</div></div>
-        <div className="menu-item"><div className="label">副菜</div><div className="name">{d.sub}</div></div>
-        <div className="menu-item"><div className="label">汁物</div><div className="name">{d.soup}</div></div>
-      </div>
-      <div className="desc">{d.mainDesc}</div>
-      <div className="sec"><h3>🛒 材料（2人分）</h3>
-        <div className="ing">{d.ing.map((x,i)=><div key={i}>{x}</div>)}</div>
-      </div>
-      <div className="sec"><h3>👩‍🍳 作り方</h3>
-        <ol className="steps">{d.steps.map((x,i)=><li key={i}>{x}</li>)}</ol>
-      </div>
-      <div className="twocol">
-        <div className="note nutri"><strong>🥗 栄養ポイント</strong><br/>{d.nutri}</div>
-        <div className="note tip"><strong>💡 コツ</strong><br/>{d.tip}</div>
+      {open && (
+        <div className="body">
+          <div className="grid2">
+            <div>
+              <h4 className="sec">材料(2人分)</h4>
+              <ul className="ing">
+                {d.ing.map((x, i) => <li key={i}><span>{x[0]}</span><span>{x[1]}</span></li>)}
+              </ul>
+            </div>
+            <div>
+              <h4 className="sec">作り方</h4>
+              <ol className="steps">
+                {d.steps.map((s, i) => <li key={i}>{s}</li>)}
+              </ol>
+              <div className="note n"><b>栄養ポイント</b>{d.nutri}</div>
+              <div className="note t"><b>調理のコツ</b>{d.tip}</div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Shopping() {
+  const [done, setDone] = useState({});
+  const toggle = (k) => setDone(p => ({ ...p, [k]: !p[k] }));
+  const total = MENU.reduce((a, d) => a + d.cost, 0);
+  return (
+    <div>
+      {SHOPPING.map((c, ci) => (
+        <div className="shop-cat" key={ci}>
+          <h3><span className="dot"></span>{c.cat}</h3>
+          <div className="shop-list">
+            {c.items.map((it, ii) => {
+              const k = ci + "-" + ii;
+              return (
+                <div className={"shop-item" + (done[k] ? " done" : "")} key={ii} onClick={() => toggle(k)}>
+                  <div className="box">{done[k] ? "✓" : ""}</div>
+                  <span>{it[0]}</span><span className="qty">{it[1]}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+      <div className="total">
+        <div className="big">約 {total.toLocaleString()} 円</div>
+        <div className="cap">7日分・2人分の夕食合計(常備調味料・米を除く)／1食あたり約{Math.round(total / 14)}円</div>
       </div>
     </div>
   );
 }
 
-function App(){
-  const [tab,setTab] = useState(0);
+function App() {
+  const [tab, setTab] = useState("menu");
+  const [open, setOpen] = useState(0);
+  const total = MENU.reduce((a, d) => a + d.cost, 0);
+  const avgTime = Math.round(MENU.reduce((a, d) => a + d.time, 0) / MENU.length);
   return (
     <div className="wrap">
-      <header>
-        <h1>今週の節約献立 🍚</h1>
-        <p>2人分・夕食 ／ 7月13日(月)〜7月19日(日)</p>
-        <div className="budget">週合計 約3,010円（買い物リスト目安）</div>
-      </header>
-      <div className="tabs">
-        {days.map((d,i)=>(
-          <button key={i} className={"tab"+(tab===i?" active":"")} onClick={()=>setTab(i)}>{d.day.slice(0,1)}<small> {d.date}</small></button>
-        ))}
-        <button className={"tab"+(tab===7?" active":"")} onClick={()=>setTab(7)}>🛒 買い物</button>
-      </div>
-      {tab<7 ? <Card d={days[tab]} /> : (
-        <div className="shop card">
-          <div className="day-head"><h2>買い物リスト</h2><span className="date">1週間分・2人</span></div>
-          <div className="shop-grid">
-            {Object.entries(shopping).map(([cat,items])=>(
-              <div className="shop-cat" key={cat}>
-                <h4>{cat}</h4>
-                <ul>{items.map((it,i)=><li key={i}>{it[0]}<span>{it[1]}</span></li>)}</ul>
-              </div>
-            ))}
-          </div>
+      <header className="hero">
+        <h1>今週の節約献立</h1>
+        <div className="range">{WEEK} ・ 2人分</div>
+        <div className="stats">
+          <div className="stat"><b>約{total.toLocaleString()}円</b>週の食費目安</div>
+          <div className="stat"><b>約{Math.round(total / 14)}円</b>1食あたり</div>
+          <div className="stat"><b>{avgTime}分</b>平均調理時間</div>
+          <div className="stat"><b>7日分</b>夕食メニュー</div>
         </div>
-      )}
-      <footer>節約重視・週合計 約3,000〜3,500円目安 ／ 毎週日曜に自動更新</footer>
+      </header>
+
+      <div className="tabs">
+        <button className={"tab" + (tab === "menu" ? " on" : "")} onClick={() => setTab("menu")}>献立カレンダー</button>
+        <button className={"tab" + (tab === "shop" ? " on" : "")} onClick={() => setTab("shop")}>買い物リスト</button>
+      </div>
+
+      {tab === "menu"
+        ? MENU.map((d, i) => (
+            <Day key={i} d={d} open={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
+          ))
+        : <Shopping />}
+
+      <footer>日付をタップすると材料・手順が開きます。買い物リストは項目をタップでチェックできます。</footer>
     </div>
   );
 }
